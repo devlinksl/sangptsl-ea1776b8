@@ -18,7 +18,7 @@ export function AboutSection() {
 
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
           <motion.div {...fadeUp(0.1)} className="glass-hover rounded-2xl p-1 min-h-[320px] flex items-center justify-center">
-            <div className="w-full h-full rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+            <div className="w-full h-full rounded-xl bg-secondary flex items-center justify-center">
               <div className="text-center">
                 <div className="w-20 h-20 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
                   <Lightbulb className="h-10 w-10 text-primary" />

@@ -14,7 +14,7 @@ const features = [
 export function FeaturesSection() {
   return (
     <section id="features" className="py-24 relative">
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 50%, hsla(250, 80%, 68%, 0.06) 0%, transparent 60%)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 50%, hsla(0, 0%, 90%, 0.4) 0%, transparent 60%)" }} />
       <div className="relative mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24">
         <motion.div {...fadeUp()} className="text-center mb-16">
           <span className="text-primary text-sm font-semibold tracking-widest uppercase">Features</span>
