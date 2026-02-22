@@ -20,38 +20,43 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-strong">
+    <header
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        background: "hsla(0, 0%, 100%, 0.85)",
+        backdropFilter: "blur(24px)",
+        WebkitBackdropFilter: "blur(24px)",
+        borderBottom: "1px solid hsla(0, 0%, 0%, 0.06)",
+      }}
+    >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:px-8">
-        {/* Logo */}
         <button onClick={() => scrollTo("#home")} className="flex items-center gap-2 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/20 group-hover:bg-primary/30 transition-colors">
-            <Sparkles className="h-5 w-5 text-primary" />
+          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-secondary group-hover:bg-accent transition-colors">
+            <Sparkles className="h-5 w-5 text-foreground" />
           </div>
           <span className="font-display text-xl font-bold tracking-tight text-foreground">
-            San<span className="gradient-text">gpt</span>
+            Sangpt
           </span>
         </button>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => scrollTo(link.href)}
-              className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary/50"
+              className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-secondary/60"
             >
               {link.label}
             </button>
           ))}
           <button
             onClick={() => scrollTo("#download")}
-            className="ml-2 px-5 py-2 text-sm font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            className="ml-2 px-5 py-2 text-sm font-semibold rounded-lg bg-foreground text-background hover:bg-foreground/90 transition-colors"
           >
             Get Started
           </button>
         </nav>
 
-        {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden p-2 text-muted-foreground hover:text-foreground"
@@ -60,28 +65,28 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-strong border-t border-border overflow-hidden"
+            className="md:hidden border-t border-border overflow-hidden"
+            style={{ background: "hsla(0, 0%, 100%, 0.95)", backdropFilter: "blur(24px)" }}
           >
             <nav className="flex flex-col p-4 gap-1">
               {navLinks.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => scrollTo(link.href)}
-                  className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-lg text-left transition-colors"
+                  className="px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary/60 rounded-lg text-left transition-colors"
                 >
                   {link.label}
                 </button>
               ))}
               <button
                 onClick={() => scrollTo("#download")}
-                className="mt-2 px-5 py-3 text-sm font-semibold rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                className="mt-2 px-5 py-3 text-sm font-semibold rounded-lg bg-foreground text-background hover:bg-foreground/90 transition-colors"
               >
                 Get Started
               </button>

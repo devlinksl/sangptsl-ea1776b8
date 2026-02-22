@@ -13,9 +13,9 @@ export function LegalSection() {
     <section className="py-24 relative">
       <div className="mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24">
         <motion.div {...fadeUp()} className="text-center mb-16">
-          <span className="text-primary text-sm font-semibold tracking-widest uppercase">Legal</span>
-          <h2 className="font-display text-3xl lg:text-5xl font-bold mt-3 mb-4">
-            Transparency & <span className="gradient-text">Trust</span>
+          <span className="text-muted-foreground text-sm font-semibold tracking-widest uppercase">Legal</span>
+          <h2 className="font-display text-3xl lg:text-5xl font-bold mt-3 mb-4 text-foreground">
+            Transparency & Trust
           </h2>
         </motion.div>
 
@@ -23,11 +23,11 @@ export function LegalSection() {
           {sections.map((s, i) => (
             <motion.div key={s.id} id={s.id} {...fadeUp(i * 0.1)} className="glass-hover rounded-2xl p-6 lg:p-8">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <s.icon className="h-5 w-5 text-primary" />
+                <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-secondary border border-border flex items-center justify-center">
+                  <s.icon className="h-5 w-5 text-foreground" />
                 </div>
                 <div>
-                  <h3 className="font-display font-semibold text-xl mb-3">{s.title}</h3>
+                  <h3 className="font-display font-semibold text-xl mb-3 text-foreground">{s.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed max-w-3xl">{s.content}</p>
                 </div>
               </div>

@@ -20,9 +20,9 @@ export function FAQSection() {
     <section id="faq" className="py-24 relative">
       <div className="mx-auto max-w-3xl px-4 lg:px-8">
         <motion.div {...fadeUp()} className="text-center mb-16">
-          <span className="text-primary text-sm font-semibold tracking-widest uppercase">FAQ</span>
-          <h2 className="font-display text-3xl lg:text-5xl font-bold mt-3 mb-4">
-            Common <span className="gradient-text">Questions</span>
+          <span className="text-muted-foreground text-sm font-semibold tracking-widest uppercase">FAQ</span>
+          <h2 className="font-display text-3xl lg:text-5xl font-bold mt-3 mb-4 text-foreground">
+            Common Questions
           </h2>
         </motion.div>
 
@@ -30,7 +30,7 @@ export function FAQSection() {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="border-border/50">
-                <AccordionTrigger className="text-left font-display font-medium hover:no-underline hover:text-primary transition-colors py-5">
+                <AccordionTrigger className="text-left font-display font-medium hover:no-underline hover:text-foreground/70 transition-colors py-5 text-foreground">
                   {faq.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-5">
