@@ -1,11 +1,12 @@
 import { Header } from "@/components/landing/Header";
 import { Sidebar } from "@/components/landing/Sidebar";
-import { HeroSection } from "@/components/landing/HeroSection";
-import { FeaturesSection } from "@/components/landing/FeaturesSection";
-import { FAQSection } from "@/components/landing/FAQSection";
 import { Footer } from "@/components/landing/Footer";
 
-const Index = () => {
+interface PageLayoutProps {
+  children: React.ReactNode;
+}
+
+export function PageLayout({ children }: PageLayoutProps) {
   return (
     <div
       className="min-h-screen"
@@ -20,14 +21,10 @@ const Index = () => {
     >
       <Header />
       <Sidebar />
-      <main className="lg:pl-60">
-        <HeroSection />
-        <FeaturesSection />
-        <FAQSection />
-        <Footer />
+      <main className="lg:pl-60 pt-16">
+        {children}
       </main>
+      <Footer />
     </div>
   );
-};
-
-export default Index;
+}

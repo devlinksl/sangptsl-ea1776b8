@@ -1,31 +1,28 @@
-import { Sparkles } from "lucide-react";
+import { Link } from "react-router-dom";
+import sangptLogo from "@/assets/sangpt-logo.png";
 
-const links = [
-  { label: "Home", href: "#home" },
-  { label: "Features", href: "#features" },
-  { label: "About", href: "#about" },
-  { label: "Download", href: "#download" },
-  { label: "License", href: "#license" },
-  { label: "Terms", href: "#terms" },
-  { label: "Privacy", href: "#privacy" },
-  { label: "FAQ", href: "#faq" },
+const quickLinks = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Download", href: "/download" },
+  { label: "Features", href: "/#features" },
+];
+
+const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
+  { label: "Open Source License", href: "/license" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 export function Footer() {
-  const scrollTo = (href: string) => {
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <footer id="contact" className="border-t border-border py-12" style={{ background: "hsla(0, 0%, 100%, 0.6)", backdropFilter: "blur(20px)" }}>
       <div className="mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24">
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-4 gap-10">
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center">
-                <Sparkles className="h-4 w-4 text-foreground" />
-              </div>
+            <div className="flex items-center gap-2.5 mb-3">
+              <img src={sangptLogo} alt="Sangpt" className="w-8 h-8 rounded-lg" />
               <span className="font-display text-lg font-bold text-foreground">Sangpt</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -35,22 +32,37 @@ export function Footer() {
 
           <div>
             <h4 className="font-display font-semibold mb-4 text-sm text-foreground">Quick Links</h4>
-            <div className="grid grid-cols-2 gap-2">
-              {links.map((link) => (
-                <button
+            <div className="flex flex-col gap-2">
+              {quickLinks.map((link) => (
+                <Link
                   key={link.href}
-                  onClick={() => scrollTo(link.href)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left"
+                  to={link.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
                   {link.label}
-                </button>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-display font-semibold mb-4 text-sm text-foreground">Legal</h4>
+            <div className="flex flex-col gap-2">
+              {legalLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>
 
           <div>
             <h4 className="font-display font-semibold mb-4 text-sm text-foreground">Stay Updated</h4>
-            <p className="text-sm text-muted-foreground mb-3">Get the latest news and updates from Sangpt.</p>
+            <p className="text-sm text-muted-foreground mb-3">Get the latest news and updates.</p>
             <div className="flex gap-2">
               <input
                 type="email"
