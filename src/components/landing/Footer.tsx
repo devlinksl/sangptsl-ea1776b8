@@ -5,14 +5,13 @@ const quickLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Download", href: "/download" },
-  { label: "Features", href: "/#features" },
+  { label: "Journal", href: "/journal" },
 ];
 
 const legalLinks = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
   { label: "Open Source License", href: "/license" },
-  { label: "FAQ", href: "/#faq" },
 ];
 
 export function Footer() {
@@ -34,11 +33,7 @@ export function Footer() {
             <h4 className="font-display font-semibold mb-4 text-sm text-foreground">Quick Links</h4>
             <div className="flex flex-col gap-2">
               {quickLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
+                <Link key={link.href} to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {link.label}
                 </Link>
               ))}
@@ -49,11 +44,7 @@ export function Footer() {
             <h4 className="font-display font-semibold mb-4 text-sm text-foreground">Legal</h4>
             <div className="flex flex-col gap-2">
               {legalLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
+                <Link key={link.href} to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {link.label}
                 </Link>
               ))}

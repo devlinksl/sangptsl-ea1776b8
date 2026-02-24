@@ -10,6 +10,8 @@ import DownloadPage from "./pages/DownloadPage";
 import PrivacyPage from "./pages/PrivacyPage";
 import TermsPage from "./pages/TermsPage";
 import LicensePage from "./pages/LicensePage";
+import JournalPage from "./pages/JournalPage";
+import ArticlePage from "./pages/ArticlePage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +30,8 @@ const App = () => (
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/license" element={<LicensePage />} />
+          <Route path="/journal" element={<JournalPage />} />
+          <Route path="/journal/:slug" element={<ArticlePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
