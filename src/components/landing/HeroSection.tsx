@@ -1,30 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
-  Search, Bot, Zap, Brain, MessageSquare, Heart, ArrowRight, Shield, Globe, Cpu,
-  Sparkles, Lock, Eye, Users, Lightbulb, Target, BookOpen, Layers, Clock,
+  Bot, Zap, Brain, MessageSquare, ArrowRight, Shield, Globe, Cpu,
+  Sparkles, Lock, Eye, Lightbulb, BookOpen, Layers, Clock,
   GraduationCap, Briefcase, PenTool, Code, HeartHandshake, ChevronRight
 } from "lucide-react";
 import { fadeUp } from "@/lib/animations";
 import sangptLogo from "@/assets/sangpt-logo.png";
-
-const categories = [
-  { icon: Bot, label: "Chat" },
-  { icon: Brain, label: "Analyze" },
-  { icon: Zap, label: "Automate" },
-  { icon: MessageSquare, label: "Create" },
-];
-
-const popularCards = [
-  { title: "Smart Conversations", subtitle: "AI-Powered" },
-  { title: "Task Automation", subtitle: "Productivity" },
-  { title: "Knowledge Base", subtitle: "Retrieval" },
-  { title: "Multi-Platform", subtitle: "Everywhere" },
-];
-
-const trustedBy = [
-  "Enterprise Ready", "SOC 2 Compliant", "GDPR Ready", "ISO 27001",
-];
 
 const capabilities = [
   { icon: MessageSquare, title: "Natural Language Chat", desc: "Communicate naturally with context-aware AI that understands nuance, intent, and follow-ups across long conversations." },
@@ -48,12 +30,12 @@ export function HeroSection() {
   return (
     <section id="home" className="relative overflow-hidden">
       {/* ─── HERO ─── */}
-      <div className="relative min-h-screen pt-24 pb-16">
+      <div className="relative min-h-[85vh] pt-24 pb-16 flex items-center">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "var(--gradient-hero)" }} />
-        <div className="relative mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div className="relative mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left: Headline */}
-            <motion.div {...fadeUp(0)} className="flex flex-col justify-center pt-8 lg:pt-16">
+            <motion.div {...fadeUp(0)} className="flex flex-col justify-center">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary border border-border text-foreground text-xs font-semibold mb-6 w-fit">
                 <img src={sangptLogo} alt="" className="h-4 w-4 rounded" /> Powered by Dev-Link
               </div>
@@ -90,47 +72,24 @@ export function HeroSection() {
               </motion.div>
             </motion.div>
 
-            {/* Right: Explore card */}
+            {/* Right: Feature highlights bento */}
             <motion.div {...fadeUp(0.15)} className="glass rounded-3xl p-6 lg:p-8">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="font-display text-2xl font-bold text-foreground">Explore</h2>
-                <div className="w-9 h-9 rounded-full bg-secondary flex items-center justify-center">
-                  <Search className="h-4 w-4 text-muted-foreground" />
-                </div>
-              </div>
-              <div className="flex items-center gap-2 mb-6">
-                <div className="flex-1 px-4 py-3 rounded-xl bg-secondary/60 border border-border text-sm text-muted-foreground">
-                  Search features...
-                </div>
-                <div className="w-10 h-10 rounded-xl bg-foreground flex items-center justify-center">
-                  <Search className="h-4 w-4 text-background" />
-                </div>
-              </div>
-              <div className="flex justify-between mb-8">
-                {categories.map((cat) => (
-                  <div key={cat.label} className="flex flex-col items-center gap-2 group cursor-pointer">
-                    <div className="w-12 h-12 rounded-xl bg-secondary border border-border flex items-center justify-center group-hover:bg-accent transition-colors">
-                      <cat.icon className="h-5 w-5 text-foreground" />
-                    </div>
-                    <span className="text-xs text-muted-foreground font-medium">{cat.label}</span>
-                  </div>
-                ))}
-              </div>
-              <h3 className="font-display text-lg font-bold text-foreground mb-4">Popular</h3>
+              <h2 className="font-display text-2xl font-bold text-foreground mb-2">What Sangpt Can Do</h2>
+              <p className="text-sm text-muted-foreground mb-6">Powerful AI capabilities, running privately on your device.</p>
               <div className="grid grid-cols-2 gap-3">
-                {popularCards.map((card, i) => (
-                  <motion.div key={card.title} {...fadeUp(0.2 + i * 0.05)} className="group relative rounded-2xl overflow-hidden bg-secondary/50 border border-border p-4 hover:bg-secondary transition-all cursor-pointer">
-                    <div className="w-full h-24 rounded-xl bg-muted mb-3 flex items-center justify-center">
-                      <img src={sangptLogo} alt="" className="h-8 w-8 opacity-20" />
+                {[
+                  { icon: Bot, label: "Smart Chat", desc: "Context-aware conversations" },
+                  { icon: Brain, label: "Deep Analysis", desc: "Research & data insights" },
+                  { icon: Zap, label: "Automation", desc: "Workflow triggers & actions" },
+                  { icon: Sparkles, label: "Adaptive AI", desc: "Learns your style" },
+                ].map((item) => (
+                  <div key={item.label} className="rounded-2xl bg-secondary/50 border border-border p-4 hover:bg-secondary transition-all cursor-default group">
+                    <div className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center mb-3 group-hover:bg-accent transition-colors">
+                      <item.icon className="h-5 w-5 text-foreground" />
                     </div>
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <p className="text-sm font-semibold text-foreground leading-tight">{card.title}</p>
-                        <p className="text-xs text-muted-foreground mt-0.5">{card.subtitle}</p>
-                      </div>
-                      <Heart className="h-4 w-4 text-muted-foreground/40 group-hover:text-foreground transition-colors" />
-                    </div>
-                  </motion.div>
+                    <p className="text-sm font-semibold text-foreground leading-tight">{item.label}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>
+                  </div>
                 ))}
               </div>
             </motion.div>
@@ -140,7 +99,7 @@ export function HeroSection() {
           <motion.div {...fadeUp(0.4)} className="mt-16 text-center">
             <p className="text-xs text-muted-foreground mb-4 font-medium tracking-wider uppercase">Trusted & Certified</p>
             <div className="flex flex-wrap justify-center gap-4">
-              {trustedBy.map((badge) => (
+              {["Enterprise Ready", "SOC 2 Compliant", "GDPR Ready", "ISO 27001"].map((badge) => (
                 <div key={badge} className="glass rounded-full px-5 py-2 text-xs font-medium text-muted-foreground flex items-center gap-2">
                   <Shield className="h-3.5 w-3.5" />
                   {badge}
@@ -297,6 +256,30 @@ export function HeroSection() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── JOURNAL CTA ─── */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 50%, hsla(35, 35%, 92%, 0.5) 0%, transparent 55%)" }} />
+        <div className="relative mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24">
+          <motion.div {...fadeUp()} className="glass rounded-3xl p-10 lg:p-16 text-center">
+            <span className="text-muted-foreground text-sm font-semibold tracking-widest uppercase mb-3 block">Journal</span>
+            <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground mb-4">
+              Go Deeper with Sangpt
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto mb-8 text-base lg:text-lg leading-relaxed">
+              Read insights, updates, and ideas from the team building Sangpt. From product announcements to deep dives on responsible AI — stay informed and inspired.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link to="/journal" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-foreground text-background font-semibold hover:bg-foreground/90 transition-all text-base">
+                Read the Sangpt Journal <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/about" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-border text-foreground font-semibold hover:bg-secondary transition-all text-base">
+                Learn How Sangpt Works
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 

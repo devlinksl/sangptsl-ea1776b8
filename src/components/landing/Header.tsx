@@ -4,6 +4,7 @@ import sangptLogo from "@/assets/sangpt-logo.png";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Journal", href: "/journal" },
   { label: "Download", href: "/download" },
   { label: "Privacy", href: "/privacy" },
   { label: "Terms", href: "/terms" },
@@ -22,7 +23,6 @@ export function Header() {
       }}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:px-8">
-        {/* Spacer for mobile hamburger */}
         <div className="w-10 lg:hidden" />
 
         <Link to="/" className="flex items-center gap-2.5 group">

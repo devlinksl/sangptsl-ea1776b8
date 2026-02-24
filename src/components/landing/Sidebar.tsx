@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Home, Info, Download, Scale, FileText, Shield, MessageSquare,
-  Zap, ChevronLeft, ChevronRight, BookOpen, Mail, X, Menu
+  Home, Info, Download, FileText, Shield, Scale,
+  ChevronLeft, ChevronRight, BookOpen, Mail, X, Menu
 } from "lucide-react";
 import sangptLogo from "@/assets/sangpt-logo.png";
 
@@ -11,8 +11,7 @@ const mainLinks = [
   { icon: Home, label: "Home", href: "/" },
   { icon: Info, label: "About Sangpt", href: "/about" },
   { icon: Download, label: "Download", href: "/download" },
-  { icon: Zap, label: "Features", href: "/#features" },
-  { icon: BookOpen, label: "Documentation", href: "/#faq" },
+  { icon: BookOpen, label: "Journal", href: "/journal" },
   { icon: Mail, label: "Contact / Support", href: "/#contact" },
 ];
 
@@ -49,6 +48,7 @@ function SidebarInner({ expanded, onToggle, onNavClick }: SidebarContentProps) {
 
   const isActive = (href: string) => {
     if (href.startsWith("/#")) return false;
+    if (href === "/journal") return location.pathname.startsWith("/journal");
     return location.pathname === href;
   };
 
@@ -90,7 +90,6 @@ function SidebarInner({ expanded, onToggle, onNavClick }: SidebarContentProps) {
 
   return (
     <>
-      {/* Logo */}
       <div className={`flex items-center gap-3 ${expanded ? "px-5 py-5" : "justify-center py-5"}`}>
         <img src={sangptLogo} alt="Sangpt" className="w-9 h-9 rounded-xl" />
         {expanded && (
@@ -100,35 +99,30 @@ function SidebarInner({ expanded, onToggle, onNavClick }: SidebarContentProps) {
 
       <div className="h-px mx-4 bg-border/40" />
 
-      {/* Menu label */}
       <div className={`pt-5 pb-2 ${expanded ? "px-5" : "px-3"}`}>
         <span className="text-[10px] font-semibold text-muted-foreground tracking-widest uppercase">
           {expanded ? "Menu" : "•••"}
         </span>
       </div>
 
-      {/* Main nav */}
       <nav className="flex flex-col gap-0.5 px-3">
         {mainLinks.map(renderLink)}
       </nav>
 
       <div className="mx-5 my-4 h-px bg-border/40" />
 
-      {/* Legal label */}
       <div className={`pb-2 ${expanded ? "px-5" : "px-3"}`}>
         <span className="text-[10px] font-semibold text-muted-foreground tracking-widest uppercase">
           {expanded ? "Legal" : ""}
         </span>
       </div>
 
-      {/* Legal nav */}
       <nav className="flex flex-col gap-0.5 px-3">
         {legalLinks.map(renderLink)}
       </nav>
 
       <div className="flex-1" />
 
-      {/* Collapse toggle (desktop only) */}
       <div className="px-3 pb-4 hidden lg:block">
         <button
           onClick={onToggle}
@@ -156,7 +150,6 @@ export function Sidebar() {
 
   return (
     <>
-      {/* Desktop sidebar */}
       <aside
         className={`hidden lg:flex fixed left-0 top-16 bottom-0 z-40 flex-col transition-all duration-300 ${
           expanded ? "w-60" : "w-[72px]"
@@ -172,7 +165,6 @@ export function Sidebar() {
         <SidebarInner expanded={expanded} onToggle={() => setExpanded(!expanded)} />
       </aside>
 
-      {/* Mobile hamburger button */}
       <button
         onClick={() => setMobileOpen(true)}
         className="lg:hidden fixed top-[18px] left-4 z-50 p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
@@ -181,7 +173,6 @@ export function Sidebar() {
         <Menu className="h-5 w-5" />
       </button>
 
-      {/* Mobile drawer overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <>
