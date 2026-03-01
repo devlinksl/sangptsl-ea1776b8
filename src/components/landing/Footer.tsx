@@ -11,7 +11,7 @@ const quickLinks = [
 const legalLinks = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
-  { label: "Open Source License", href: "/license" },
+  { label: "License", href: "/license" },
 ];
 
 export function Footer() {
@@ -22,10 +22,10 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2.5 mb-3">
               <img src={sangptLogo} alt="Sangpt" className="w-8 h-8 rounded-lg" />
-              <span className="font-display text-lg font-bold text-foreground">Sangpt</span>
+              <span className="font-display text-lg font-bold text-foreground">Sangpt 🇸🇱</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Your personal AI companion, built by Dev-Link. Smart, secure, and always learning.
+              Sierra Leone's AI companion, proudly built by Dev-Link in Freetown. Available on the App Store and Google Play.
             </p>
           </div>
 
@@ -53,7 +53,7 @@ export function Footer() {
 
           <div>
             <h4 className="font-display font-semibold mb-4 text-sm text-foreground">Stay Updated</h4>
-            <p className="text-sm text-muted-foreground mb-3">Get the latest news and updates.</p>
+            <p className="text-sm text-muted-foreground mb-3">Get the latest news from Freetown.</p>
             <div className="flex gap-2">
               <input
                 type="email"
@@ -68,7 +68,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 pt-6 border-t border-border text-center">
-          <p className="text-xs text-muted-foreground">© 2026 Dev-Link. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground">© 2026 Dev-Link · Freetown, Sierra Leone 🇸🇱 · All rights reserved.</p>
         </div>
       </div>
     </footer>

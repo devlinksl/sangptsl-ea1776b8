@@ -8,7 +8,7 @@ const sections = [
     icon: CheckCircle,
     title: "1. Acceptance of Terms",
     content: [
-      "By downloading, installing, accessing, or using Sangpt (the \"Service\"), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service (\"Terms\"). These Terms constitute a legally binding agreement between you and Dev-Link (\"Company,\" \"we,\" \"us,\" or \"our\").",
+      "By downloading, installing, accessing, or using Sangpt (the \"Service\") from the Apple App Store or Google Play Store, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service (\"Terms\"). These Terms constitute a legally binding agreement between you and Dev-Link, a technology company based in Freetown, Sierra Leone (\"Company,\" \"we,\" \"us,\" or \"our\").",
       "If you do not agree to these Terms, you must not access or use the Service. If you are accessing or using the Service on behalf of a business or entity, you represent and warrant that you have the authority to bind that business or entity to these Terms, and your acceptance of these Terms will be treated as acceptance by that business or entity.",
       "We reserve the right to update or modify these Terms at any time without prior notice. Your continued use of the Service after any such changes constitutes your acceptance of the new Terms. We encourage you to review these Terms periodically."
     ],
@@ -89,13 +89,13 @@ const TermsPage = () => {
             </div>
             <h1 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-4">Terms of Service</h1>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Please read these terms carefully before using Sangpt. By using our Service, you agree to be bound by these terms. Last updated: February 2026.
+              Please read these terms carefully before using Sangpt — Sierra Leone's AI, built by Dev-Link. Last updated: February 2026.
             </p>
           </motion.div>
 
           <motion.div {...fadeUp(0.05)} className="glass rounded-2xl p-6 lg:p-8 mb-8">
             <p className="text-muted-foreground text-sm leading-relaxed">
-              <strong className="text-foreground">Summary:</strong> These Terms of Service govern your use of the Sangpt application developed by Dev-Link. They cover your rights and responsibilities, our intellectual property, liability limitations, and how disputes are resolved. By using Sangpt, you agree to these terms in their entirety.
+              <strong className="text-foreground">Summary:</strong> These Terms of Service govern your use of the Sangpt mobile application, developed by Dev-Link in Freetown, Sierra Leone. They cover your rights and responsibilities, our intellectual property, liability limitations, and how disputes are resolved. Sangpt is available exclusively on the Apple App Store and Google Play Store.
             </p>
           </motion.div>
 
