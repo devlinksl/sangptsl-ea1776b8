@@ -14,7 +14,7 @@ const LicensePage = () => {
             </div>
             <h1 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-4">Open Source License</h1>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Sangpt is built with open source at its core. Transparency, collaboration, and freedom are central to everything we do.
+              Sangpt is Sierra Leone's AI, built by Dev-Link in Freetown. Transparency, collaboration, and innovation are central to everything we do.
             </p>
           </motion.div>
 
@@ -27,7 +27,7 @@ const LicensePage = () => {
               <div>
                 <h2 className="font-display font-semibold text-lg mb-3 text-foreground">Ownership & Copyright</h2>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-3">
-                  Sangpt is developed, maintained, and owned by <strong className="text-foreground">Dev-Link</strong>. All original source code, documentation, branding assets (including the Sangpt name, logo, and visual identity), and proprietary algorithms are the intellectual property of Dev-Link, protected under applicable copyright and trademark laws.
+                  Sangpt is developed, maintained, and owned by <strong className="text-foreground">Dev-Link</strong>, a technology company headquartered in Freetown, Sierra Leone. All original source code, documentation, branding assets (including the Sangpt name, logo, and visual identity), and proprietary algorithms are the intellectual property of Dev-Link, protected under applicable copyright and trademark laws.
                 </p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
                   While the source code is released under an open-source license, the Sangpt trademark and branding remain the exclusive property of Dev-Link. Use of the Sangpt name or logo in derivative works requires prior written permission from Dev-Link.

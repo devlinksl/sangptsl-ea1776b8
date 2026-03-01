@@ -1,22 +1,20 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Download, Monitor, Apple, Terminal, Smartphone, Star, ArrowRight, ChevronLeft, Grid3X3, Check } from "lucide-react";
+import { Smartphone, Star, ArrowRight, ChevronLeft, Grid3X3, Check, Apple, Play } from "lucide-react";
 import { fadeUp } from "@/lib/animations";
 import { PageLayout } from "@/components/layout/PageLayout";
 import sangptLogo from "@/assets/sangpt-logo.png";
 
 const platforms = [
-  { icon: Monitor, name: "Windows", version: "v2.1.0", size: "85 MB", available: true },
-  { icon: Apple, name: "macOS", version: "v2.1.0", size: "92 MB", available: true },
-  { icon: Terminal, name: "Linux", version: "v2.1.0", size: "78 MB", available: true },
-  { icon: Smartphone, name: "Mobile", version: "Coming Soon", size: "—", available: false },
+  { icon: Apple, name: "App Store", subtitle: "iOS 15+", version: "v2.1.0", size: "120 MB", available: true, storeUrl: "#" },
+  { icon: Play, name: "Google Play", subtitle: "Android 10+", version: "v2.1.0", size: "95 MB", available: true, storeUrl: "#" },
 ];
 
 const features = [
   "AI-Powered Smart Chat",
   "Task Automation Engine",
   "Knowledge Retrieval",
-  "Multi-Platform Support",
+  "Built for Sierra Leone",
   "End-to-End Encryption",
   "Offline Mode",
 ];
@@ -62,13 +60,14 @@ const DownloadPage = () => {
                   ))}
                   <span className="text-card/60 text-xs ml-2">5.0</span>
                 </div>
-                <h1 className="font-display text-3xl font-bold text-card mb-2">Sangpt AI</h1>
+                <h1 className="font-display text-3xl font-bold text-card mb-2">Sangpt AI 🇸🇱</h1>
                 <p className="text-card/70 text-sm leading-relaxed mb-6">
-                  The intelligent companion built with love and innovation by Dev-Link.
+                  Sierra Leone's AI companion, built with love and innovation by Dev-Link in Freetown.
                 </p>
                 <div className="flex items-center gap-3">
                   <button className="flex-1 px-6 py-3.5 rounded-2xl bg-card text-foreground font-semibold text-sm hover:bg-card/90 transition-all">
-                    Download Now
+                    <Smartphone className="h-4 w-4 inline mr-2" />
+                    Get the App
                   </button>
                   <div className="w-12 h-12 rounded-2xl bg-card flex items-center justify-center hover:bg-card/90 transition-colors cursor-pointer">
                     <ArrowRight className="h-5 w-5 text-foreground" />
@@ -80,8 +79,8 @@ const DownloadPage = () => {
             {/* Platform list */}
             <div className="flex flex-col gap-4">
               <motion.div {...fadeUp(0.1)}>
-                <h2 className="font-display text-2xl font-bold text-foreground mb-2">Choose Your Platform</h2>
-                <p className="text-muted-foreground text-sm mb-6">Download Sangpt for your operating system.</p>
+                <h2 className="font-display text-2xl font-bold text-foreground mb-2">Available on Mobile</h2>
+                <p className="text-muted-foreground text-sm mb-6">Download Sangpt from the App Store or Google Play.</p>
               </motion.div>
               
               {platforms.map((p, i) => (
@@ -91,28 +90,31 @@ const DownloadPage = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-display font-semibold text-foreground">{p.name}</h3>
-                    <p className="text-xs text-muted-foreground">{p.version} · {p.size}</p>
+                    <p className="text-xs text-muted-foreground">{p.subtitle} · {p.version} · {p.size}</p>
                   </div>
-                  <button
-                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
-                      p.available
-                        ? "bg-foreground text-background hover:bg-foreground/90"
-                        : "bg-secondary text-muted-foreground cursor-not-allowed"
-                    }`}
-                    disabled={!p.available}
+                  <a
+                    href={p.storeUrl}
+                    className="px-5 py-2.5 rounded-xl bg-foreground text-background text-sm font-semibold hover:bg-foreground/90 transition-all inline-flex items-center gap-2"
                   >
-                    {p.available ? <Download className="h-4 w-4" /> : "Soon"}
-                  </button>
+                    <Smartphone className="h-4 w-4" /> Get
+                  </a>
                 </motion.div>
               ))}
 
-              <motion.div {...fadeUp(0.4)} className="glass rounded-2xl p-5 mt-2">
-                <h3 className="font-display font-semibold mb-3 text-foreground text-sm">System Requirements</h3>
+              <motion.div {...fadeUp(0.3)} className="glass rounded-2xl p-5 mt-2">
+                <h3 className="font-display font-semibold mb-3 text-foreground text-sm">Device Requirements</h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
-                  <div><span className="text-foreground font-medium">OS:</span> Windows 10+, macOS 12+, Ubuntu 20.04+</div>
-                  <div><span className="text-foreground font-medium">RAM:</span> 4 GB minimum, 8 GB recommended</div>
-                  <div><span className="text-foreground font-medium">Storage:</span> 200 MB available space</div>
+                  <div><span className="text-foreground font-medium">iOS:</span> iPhone 8 or later, iOS 15+</div>
+                  <div><span className="text-foreground font-medium">Android:</span> Android 10+, 3 GB RAM minimum</div>
+                  <div><span className="text-foreground font-medium">Storage:</span> 150 MB available space</div>
                 </div>
+              </motion.div>
+
+              <motion.div {...fadeUp(0.35)} className="glass rounded-2xl p-5">
+                <h3 className="font-display font-semibold mb-3 text-foreground text-sm">Why Mobile Only?</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Sangpt is designed as a mobile-first AI companion. We believe the best AI assistant lives in your pocket — always accessible, whether you're in Freetown, Bo, Kenema, or anywhere in the world. Desktop support may come in the future.
+                </p>
               </motion.div>
             </div>
           </div>

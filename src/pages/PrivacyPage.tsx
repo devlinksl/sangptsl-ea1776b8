@@ -90,13 +90,13 @@ const PrivacyPage = () => {
             </div>
             <h1 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-4">Privacy Policy</h1>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Your privacy is fundamental to how we build Sangpt. This policy explains what data we collect, how we use it, and the controls you have. Last updated: February 2026.
+              Your privacy is fundamental to how we build Sangpt — Sierra Leone's AI, built by Dev-Link in Freetown. This policy explains what data we collect, how we use it, and the controls you have. Last updated: February 2026.
             </p>
           </motion.div>
 
           <motion.div {...fadeUp(0.05)} className="glass rounded-2xl p-6 lg:p-8 mb-8">
             <p className="text-muted-foreground text-sm leading-relaxed">
-              <strong className="text-foreground">Our Commitment:</strong> Sangpt is built with a privacy-first architecture. Your conversations and personal data are stored locally on your device by default. We collect only minimal, anonymized analytics to improve the product. We never sell your data, and you have full control over what information you share with us.
+              <strong className="text-foreground">Our Commitment:</strong> Sangpt, built by Dev-Link in Sierra Leone, is designed with a privacy-first architecture. Your conversations and personal data are protected by default. We collect only minimal, anonymized analytics to improve the product. We never sell your data. Available on iOS and Android.
             </p>
           </motion.div>
 
