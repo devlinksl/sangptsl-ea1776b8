@@ -1,22 +1,17 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Smartphone, Star, ArrowRight, ChevronLeft, Grid3X3, Check, Apple, Play } from "lucide-react";
+import { Smartphone, Star, ArrowRight, ChevronLeft, Check, Apple, Play, Download, Shield, Zap, Globe, Lock } from "lucide-react";
 import { fadeUp } from "@/lib/animations";
 import { PageLayout } from "@/components/layout/PageLayout";
 import sangptLogo from "@/assets/sangpt-logo.png";
 
-const platforms = [
-  { icon: Apple, name: "App Store", subtitle: "iOS 15+", version: "v2.1.0", size: "120 MB", available: true, storeUrl: "#" },
-  { icon: Play, name: "Google Play", subtitle: "Android 10+", version: "v2.1.0", size: "95 MB", available: true, storeUrl: "#" },
-];
+const APK_URL = "/download/sangpt.apk";
 
 const features = [
-  "AI-Powered Smart Chat",
-  "Task Automation Engine",
-  "Knowledge Retrieval",
-  "Built for Sierra Leone",
-  "End-to-End Encryption",
-  "Offline Mode",
+  { icon: Zap, title: "AI-Powered Smart Chat", desc: "Natural conversations in English & Krio" },
+  { icon: Globe, title: "Built for Sierra Leone", desc: "Designed for local needs and contexts" },
+  { icon: Lock, title: "End-to-End Encryption", desc: "Your data stays completely private" },
+  { icon: Shield, title: "Offline Mode", desc: "Core features work without internet" },
 ];
 
 const DownloadPage = () => {
@@ -24,84 +19,132 @@ const DownloadPage = () => {
     <PageLayout>
       <div className="py-16 lg:py-24">
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
-          {/* Hero card */}
-          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+
+          {/* Hero Section */}
+          <div className="grid lg:grid-cols-2 gap-10 mb-20 items-center">
+            {/* Left — App Preview Card */}
             <motion.div
               {...fadeUp(0)}
-              className="relative rounded-3xl overflow-hidden min-h-[520px] flex flex-col justify-between"
+              className="relative rounded-3xl overflow-hidden min-h-[560px] flex flex-col justify-between"
               style={{
-                background: "linear-gradient(180deg, hsla(30, 30%, 75%, 0.3) 0%, hsla(25, 20%, 40%, 0.8) 60%, hsla(20, 15%, 20%, 0.95) 100%)",
+                background: "linear-gradient(160deg, hsla(250, 30%, 18%, 1) 0%, hsla(220, 25%, 10%, 1) 50%, hsla(250, 20%, 8%, 1) 100%)",
               }}
             >
-              <div className="flex items-center justify-between p-6">
-                <Link to="/" className="w-9 h-9 rounded-full bg-card/20 backdrop-blur-sm flex items-center justify-center hover:bg-card/30 transition-colors">
-                  <ChevronLeft className="h-4 w-4 text-card" />
+              {/* Glow effects */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full" style={{ background: "radial-gradient(circle, hsla(220, 80%, 60%, 0.15), transparent 60%)" }} />
+                <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full" style={{ background: "radial-gradient(circle, hsla(280, 60%, 50%, 0.1), transparent 60%)" }} />
+              </div>
+
+              <div className="flex items-center justify-between p-6 relative z-10">
+                <Link to="/" className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors">
+                  <ChevronLeft className="h-4 w-4 text-white" />
                 </Link>
-                <div className="w-9 h-9 rounded-full bg-card/20 backdrop-blur-sm flex items-center justify-center">
-                  <Grid3X3 className="h-4 w-4 text-card" />
+                <div className="flex items-center gap-1.5">
+                  {[1, 2, 3, 4, 5].map((s) => (
+                    <Star key={s} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                  ))}
+                  <span className="text-white/50 text-xs ml-1.5">5.0</span>
                 </div>
               </div>
 
-              <div className="flex-1 flex items-center justify-center">
-                <motion.img
-                  src={sangptLogo}
-                  alt="Sangpt"
-                  className="w-32 h-32 rounded-3xl"
+              <div className="flex-1 flex items-center justify-center relative z-10">
+                <motion.div
+                  className="relative"
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                />
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="absolute inset-0 rounded-3xl" style={{ boxShadow: "0 0 60px hsla(220, 80%, 60%, 0.2), 0 0 120px hsla(280, 60%, 50%, 0.1)" }} />
+                  <img src={sangptLogo} alt="Sangpt AI" className="w-36 h-36 rounded-3xl relative z-10" />
+                </motion.div>
               </div>
 
-              <div className="p-6 pt-0">
-                <div className="flex items-center gap-1 mb-3">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} className="h-4 w-4 fill-amber-400 text-amber-400" />
-                  ))}
-                  <span className="text-card/60 text-xs ml-2">5.0</span>
-                </div>
-                <h1 className="font-display text-3xl font-bold text-card mb-2">Sangpt AI 🇸🇱</h1>
-                <p className="text-card/70 text-sm leading-relaxed mb-6">
-                  Sierra Leone's AI companion, built with love and innovation by Dev-Link in Freetown.
+              <div className="p-8 pt-0 relative z-10">
+                <h1 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  Sangpt AI 🇸🇱
+                </h1>
+                <p className="text-white/50 text-sm leading-relaxed mb-6">
+                  Sierra Leone's AI companion — smart, private, and built with love by Dev-Link in Freetown.
                 </p>
-                <div className="flex items-center gap-3">
-                  <button className="flex-1 px-6 py-3.5 rounded-2xl bg-card text-foreground font-semibold text-sm hover:bg-card/90 transition-all">
-                    <Smartphone className="h-4 w-4 inline mr-2" />
-                    Get the App
-                  </button>
-                  <div className="w-12 h-12 rounded-2xl bg-card flex items-center justify-center hover:bg-card/90 transition-colors cursor-pointer">
-                    <ArrowRight className="h-5 w-5 text-foreground" />
-                  </div>
-                </div>
+                <a
+                  href={APK_URL}
+                  download="sangpt.apk"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white text-black font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] group"
+                >
+                  <Download className="h-4 w-4" />
+                  Download APK
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </a>
               </div>
             </motion.div>
 
-            {/* Platform list */}
-            <div className="flex flex-col gap-4">
+            {/* Right — Download Options */}
+            <div className="flex flex-col gap-5">
               <motion.div {...fadeUp(0.1)}>
-                <h2 className="font-display text-2xl font-bold text-foreground mb-2">Available on Mobile</h2>
-                <p className="text-muted-foreground text-sm mb-6">Download Sangpt from the App Store or Google Play.</p>
+                <h2 className="font-display text-3xl lg:text-4xl font-bold text-foreground mb-3">
+                  Get Sangpt on Your Phone
+                </h2>
+                <p className="text-muted-foreground text-base leading-relaxed mb-2">
+                  Download Sierra Leone's AI companion. Available on App Store, Google Play, or directly as an APK.
+                </p>
               </motion.div>
-              
-              {platforms.map((p, i) => (
-                <motion.div key={p.name} {...fadeUp(0.15 + i * 0.05)} className="glass-hover rounded-2xl p-5 flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-xl bg-secondary border border-border flex items-center justify-center group-hover:bg-accent transition-colors">
-                    <p.icon className="h-6 w-6 text-foreground" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-display font-semibold text-foreground">{p.name}</h3>
-                    <p className="text-xs text-muted-foreground">{p.subtitle} · {p.version} · {p.size}</p>
-                  </div>
-                  <a
-                    href={p.storeUrl}
-                    className="px-5 py-2.5 rounded-xl bg-foreground text-background text-sm font-semibold hover:bg-foreground/90 transition-all inline-flex items-center gap-2"
-                  >
-                    <Smartphone className="h-4 w-4" /> Get
-                  </a>
-                </motion.div>
-              ))}
 
-              <motion.div {...fadeUp(0.3)} className="glass rounded-2xl p-5 mt-2">
+              {/* Store Buttons */}
+              <motion.a
+                {...fadeUp(0.15)}
+                href={APK_URL}
+                download="sangpt.apk"
+                className="glass-hover rounded-2xl p-5 flex items-center gap-4 group cursor-pointer"
+              >
+                <div className="w-14 h-14 rounded-xl bg-foreground flex items-center justify-center group-hover:scale-105 transition-transform">
+                  <Download className="h-7 w-7 text-background" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-display font-semibold text-foreground text-lg">Direct Download</h3>
+                  <p className="text-xs text-muted-foreground">APK File · Android · v2.1.0 · 95 MB</p>
+                </div>
+                <div className="px-5 py-2.5 rounded-xl bg-foreground text-background text-sm font-semibold">
+                  Get APK
+                </div>
+              </motion.a>
+
+              <motion.a
+                {...fadeUp(0.2)}
+                href="#"
+                className="glass-hover rounded-2xl p-5 flex items-center gap-4 group cursor-pointer"
+              >
+                <div className="w-14 h-14 rounded-xl bg-secondary border border-border flex items-center justify-center group-hover:bg-accent transition-colors">
+                  <Apple className="h-7 w-7 text-foreground" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-display font-semibold text-foreground text-lg">App Store</h3>
+                  <p className="text-xs text-muted-foreground">iOS 15+ · v2.1.0 · 120 MB</p>
+                </div>
+                <div className="px-5 py-2.5 rounded-xl bg-secondary text-foreground text-sm font-semibold border border-border">
+                  Get
+                </div>
+              </motion.a>
+
+              <motion.a
+                {...fadeUp(0.25)}
+                href="#"
+                className="glass-hover rounded-2xl p-5 flex items-center gap-4 group cursor-pointer"
+              >
+                <div className="w-14 h-14 rounded-xl bg-secondary border border-border flex items-center justify-center group-hover:bg-accent transition-colors">
+                  <Play className="h-7 w-7 text-foreground" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-display font-semibold text-foreground text-lg">Google Play</h3>
+                  <p className="text-xs text-muted-foreground">Android 10+ · v2.1.0 · 95 MB</p>
+                </div>
+                <div className="px-5 py-2.5 rounded-xl bg-secondary text-foreground text-sm font-semibold border border-border">
+                  Get
+                </div>
+              </motion.a>
+
+              {/* Device Requirements */}
+              <motion.div {...fadeUp(0.3)} className="glass rounded-2xl p-5">
                 <h3 className="font-display font-semibold mb-3 text-foreground text-sm">Device Requirements</h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div><span className="text-foreground font-medium">iOS:</span> iPhone 8 or later, iOS 15+</div>
@@ -109,29 +152,32 @@ const DownloadPage = () => {
                   <div><span className="text-foreground font-medium">Storage:</span> 150 MB available space</div>
                 </div>
               </motion.div>
-
-              <motion.div {...fadeUp(0.35)} className="glass rounded-2xl p-5">
-                <h3 className="font-display font-semibold mb-3 text-foreground text-sm">Why Mobile Only?</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Sangpt is designed as a mobile-first AI companion. We believe the best AI assistant lives in your pocket — always accessible, whether you're in Freetown, Bo, Kenema, or anywhere in the world. Desktop support may come in the future.
-                </p>
-              </motion.div>
             </div>
           </div>
 
-          {/* What's included */}
-          <motion.div {...fadeUp(0.5)} className="glass rounded-3xl p-8 lg:p-12">
-            <h2 className="font-display text-2xl font-bold text-foreground mb-8 text-center">What's Included</h2>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {features.map((f) => (
-                <div key={f} className="flex items-center gap-3 p-3 rounded-xl">
-                  <div className="w-6 h-6 rounded-full bg-foreground flex items-center justify-center flex-shrink-0">
-                    <Check className="h-3.5 w-3.5 text-background" />
+          {/* Features Grid */}
+          <motion.div {...fadeUp(0.35)} className="mb-20">
+            <h2 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-8 text-center">What's Inside</h2>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {features.map((f, i) => (
+                <motion.div key={f.title} {...fadeUp(0.4 + i * 0.05)} className="glass-hover rounded-2xl p-6 text-center group">
+                  <div className="w-12 h-12 rounded-xl bg-secondary border border-border flex items-center justify-center mx-auto mb-4 group-hover:bg-accent transition-colors">
+                    <f.icon className="h-6 w-6 text-foreground" />
                   </div>
-                  <span className="text-sm font-medium text-foreground">{f}</span>
-                </div>
+                  <h3 className="font-display font-semibold text-foreground mb-1">{f.title}</h3>
+                  <p className="text-xs text-muted-foreground">{f.desc}</p>
+                </motion.div>
               ))}
             </div>
+          </motion.div>
+
+          {/* Why Mobile Only */}
+          <motion.div {...fadeUp(0.5)} className="glass rounded-3xl p-8 lg:p-12 text-center max-w-3xl mx-auto">
+            <Smartphone className="h-8 w-8 text-foreground mx-auto mb-4" />
+            <h2 className="font-display text-2xl font-bold text-foreground mb-4">Why Mobile First?</h2>
+            <p className="text-muted-foreground leading-relaxed">
+              Sangpt is designed as a mobile-first AI companion. We believe the best AI assistant lives in your pocket — always accessible, whether you're in Freetown, Bo, Kenema, or anywhere in the world. In Sierra Leone, smartphone penetration far exceeds desktop usage, making mobile the natural home for Sangpt.
+            </p>
           </motion.div>
         </div>
       </div>

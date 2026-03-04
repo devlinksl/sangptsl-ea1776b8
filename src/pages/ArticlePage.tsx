@@ -29,6 +29,17 @@ const ArticlePage = () => {
             </Link>
           </motion.div>
 
+          {/* Hero Image */}
+          {article.image && (
+            <motion.div {...fadeUp(0.03)} className="rounded-3xl overflow-hidden mb-8">
+              <img
+                src={article.image}
+                alt={article.title}
+                className="w-full aspect-[2/1] object-cover"
+              />
+            </motion.div>
+          )}
+
           {/* Header */}
           <motion.div {...fadeUp(0.05)} className="mb-10">
             <div className="flex items-center gap-3 mb-4">
@@ -71,14 +82,21 @@ const ArticlePage = () => {
                   <Link
                     key={r.slug}
                     to={`/journal/${r.slug}`}
-                    className="glass-hover rounded-2xl p-5 group"
+                    className="glass-hover rounded-2xl overflow-hidden group"
                   >
-                    <h4 className="font-display font-semibold text-foreground mb-2 group-hover:text-foreground/80 transition-colors leading-snug">
-                      {r.title}
-                    </h4>
-                    <p className="text-xs text-muted-foreground line-clamp-2">
-                      {r.excerpt}
-                    </p>
+                    {r.image && (
+                      <div className="aspect-[16/10] overflow-hidden">
+                        <img src={r.image} alt={r.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      </div>
+                    )}
+                    <div className="p-5">
+                      <h4 className="font-display font-semibold text-foreground mb-2 group-hover:text-foreground/80 transition-colors leading-snug">
+                        {r.title}
+                      </h4>
+                      <p className="text-xs text-muted-foreground line-clamp-2">
+                        {r.excerpt}
+                      </p>
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -88,28 +106,31 @@ const ArticlePage = () => {
           {/* CTA */}
           <motion.div
             {...fadeUp(0.3)}
-            className="rounded-3xl p-8 lg:p-12 text-center"
-            style={{ background: "linear-gradient(135deg, hsl(0 0% 9%), hsl(0 0% 18%))" }}
+            className="rounded-3xl p-8 lg:p-12 text-center relative overflow-hidden"
+            style={{ background: "linear-gradient(135deg, hsl(220 15% 8%), hsl(250 20% 15%), hsl(220 25% 10%))" }}
           >
-            <h2 className="font-display text-2xl font-bold text-background mb-3">
-              Try Sangpt Today
-            </h2>
-            <p className="text-background/60 max-w-md mx-auto mb-6 text-sm">
-              Experience the AI assistant that respects your privacy and adapts to your workflow.
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              <Link
-                to="/download"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-background text-foreground font-semibold hover:bg-background/90 transition-all text-sm"
-              >
-                Download Free <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                to="/"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-background/20 text-background font-semibold hover:bg-background/10 transition-all text-sm"
-              >
-                Back to Home
-              </Link>
+            <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 30% 50%, hsla(220, 80%, 60%, 0.2), transparent 50%)" }} />
+            <div className="relative">
+              <h2 className="font-display text-2xl font-bold text-white mb-3">
+                Try Sangpt Today
+              </h2>
+              <p className="text-white/50 max-w-md mx-auto mb-6 text-sm">
+                Experience Sierra Leone's AI assistant. Private, smart, and built for you.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <Link
+                  to="/download"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-black font-semibold hover:bg-white/90 transition-all text-sm"
+                >
+                  Download Free <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  to="/"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-white/15 text-white font-semibold hover:bg-white/10 transition-all text-sm"
+                >
+                  Back to Home
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>

@@ -1,14 +1,16 @@
+import { Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   Bot, Zap, Brain, MessageSquare, ArrowRight, Shield, Globe, Cpu,
   Sparkles, Lock, Eye, Lightbulb, BookOpen, Layers, Clock,
   GraduationCap, Briefcase, PenTool, Code, HeartHandshake, ChevronRight,
-  Smartphone
+  Smartphone, Download, Play
 } from "lucide-react";
 import { fadeUp } from "@/lib/animations";
 import sangptLogo from "@/assets/sangpt-logo.png";
 import devlinkLogo from "@/assets/devlink-logo.png";
+import { HeroScene3D } from "./HeroScene3D";
 
 const capabilities = [
   { icon: MessageSquare, title: "Natural Language Chat", desc: "Communicate naturally in English and Krio with context-aware AI that understands nuance, intent, and follow-ups across long conversations." },
@@ -31,35 +33,60 @@ const useCases = [
 export function HeroSection() {
   return (
     <section id="home" className="relative overflow-hidden">
-      {/* ─── HERO ─── */}
-      <div className="relative min-h-[85vh] pt-24 pb-16 flex items-center">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "var(--gradient-hero)" }} />
-        <div className="relative mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Headline */}
+      {/* ─── 3D HERO ─── */}
+      <div className="relative min-h-screen pt-20 pb-16 flex items-center overflow-hidden">
+        {/* 3D Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, hsl(220 15% 8%) 0%, hsl(250 20% 12%) 40%, hsl(220 25% 10%) 100%)" }} />
+          <Suspense fallback={null}>
+            <HeroScene3D />
+          </Suspense>
+        </div>
+
+        {/* Gradient overlays for text readability */}
+        <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(90deg, hsla(220, 15%, 8%, 0.85) 0%, hsla(220, 15%, 8%, 0.4) 50%, transparent 100%)" }} />
+        <div className="absolute bottom-0 left-0 right-0 h-32 z-[1]" style={{ background: "linear-gradient(to top, hsl(0, 0%, 98%), transparent)" }} />
+
+        <div className="relative z-[2] mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24 w-full">
+          <div className="max-w-2xl">
             <motion.div {...fadeUp(0)} className="flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary border border-border text-foreground text-xs font-semibold mb-6 w-fit">
-                <img src={devlinkLogo} alt="Dev-Link" className="h-4 w-4 rounded" /> Built by Dev-Link 🇸🇱
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white/80 text-xs font-semibold mb-8 w-fit">
+                <img src={devlinkLogo} alt="Dev-Link" className="h-4 w-4 rounded" />
+                <span>Built by Dev-Link</span>
+                <span className="ml-1">🇸🇱</span>
               </div>
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-4 text-foreground">
-                Meet Sangpt
-                <br />
-                <span className="text-muted-foreground text-3xl sm:text-4xl lg:text-5xl font-semibold">
-                  Sierra Leone's AI Companion
-                </span>
+
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-2 text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Meet Sangpt.
               </h1>
-              <p className="text-muted-foreground text-base lg:text-lg max-w-xl mb-8 leading-relaxed">
-                The first AI assistant built in Sierra Leone, by Sierra Leoneans, for the world. Smart, adaptive, and designed to assist you with daily tasks — powered by Dev-Link's innovation from Freetown.
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white/50 mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                Sierra Leone's AI Companion
+              </h2>
+
+              <p className="text-white/60 text-base lg:text-lg max-w-xl mb-10 leading-relaxed">
+                The first AI assistant built in Sierra Leone, by Sierra Leoneans, for the world. Smart, adaptive, and private — download now on the App Store & Google Play.
               </p>
-              <div className="flex flex-wrap gap-3">
-                <Link to="/download" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-foreground text-background font-semibold hover:bg-foreground/90 transition-all hover:shadow-lg">
-                  <Smartphone className="h-4 w-4" /> Get the App
+
+              <div className="flex flex-wrap gap-3 mb-12">
+                <Link
+                  to="/download"
+                  className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-2xl bg-white text-black font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-[1.02]"
+                >
+                  <Download className="h-4 w-4" />
+                  Download the App
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </Link>
-                <Link to="/about" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border bg-card text-foreground font-semibold hover:bg-secondary transition-all">
+                <Link
+                  to="/about"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl border border-white/15 text-white font-semibold text-sm hover:bg-white/10 backdrop-blur-sm transition-all"
+                >
+                  <Play className="h-4 w-4" />
                   Learn More
                 </Link>
               </div>
-              <motion.div {...fadeUp(0.3)} className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+
+              {/* Stats */}
+              <motion.div {...fadeUp(0.3)} className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 {[
                   { value: "🇸🇱", label: "Made in Salone" },
                   { value: "10K+", label: "Downloads" },
@@ -67,48 +94,13 @@ export function HeroSection() {
                   { value: "∞", label: "Possibilities" },
                 ].map((stat) => (
                   <div key={stat.label} className="text-center">
-                    <div className="font-display text-2xl font-bold text-foreground">{stat.value}</div>
-                    <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
+                    <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{stat.value}</div>
+                    <div className="text-[11px] text-white/40 mt-1 font-medium uppercase tracking-wider">{stat.label}</div>
                   </div>
                 ))}
               </motion.div>
             </motion.div>
-
-            {/* Right: Feature highlights bento */}
-            <motion.div {...fadeUp(0.15)} className="glass rounded-3xl p-6 lg:p-8">
-              <h2 className="font-display text-2xl font-bold text-foreground mb-2">What Sangpt Can Do</h2>
-              <p className="text-sm text-muted-foreground mb-6">Powerful AI capabilities, designed in Freetown for the world.</p>
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  { icon: Bot, label: "Smart Chat", desc: "Context-aware conversations" },
-                  { icon: Brain, label: "Deep Analysis", desc: "Research & data insights" },
-                  { icon: Zap, label: "Automation", desc: "Workflow triggers & actions" },
-                  { icon: Sparkles, label: "Adaptive AI", desc: "Learns your style" },
-                ].map((item) => (
-                  <div key={item.label} className="rounded-2xl bg-secondary/50 border border-border p-4 hover:bg-secondary transition-all cursor-default group">
-                    <div className="w-10 h-10 rounded-xl bg-card border border-border flex items-center justify-center mb-3 group-hover:bg-accent transition-colors">
-                      <item.icon className="h-5 w-5 text-foreground" />
-                    </div>
-                    <p className="text-sm font-semibold text-foreground leading-tight">{item.label}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
           </div>
-
-          {/* Trust badges */}
-          <motion.div {...fadeUp(0.4)} className="mt-16 text-center">
-            <p className="text-xs text-muted-foreground mb-4 font-medium tracking-wider uppercase">Trusted & Certified</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              {["Made in Sierra Leone", "Privacy First", "Available on iOS & Android", "Built by Dev-Link"].map((badge) => (
-                <div key={badge} className="glass rounded-full px-5 py-2 text-xs font-medium text-muted-foreground flex items-center gap-2">
-                  <Shield className="h-3.5 w-3.5" />
-                  {badge}
-                </div>
-              ))}
-            </div>
-          </motion.div>
         </div>
       </div>
 
@@ -150,6 +142,36 @@ export function HeroSection() {
         </div>
       </section>
 
+      {/* ─── BENTO GRID ─── */}
+      <section className="py-24 relative">
+        <div className="relative mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24">
+          <motion.div {...fadeUp()} className="text-center mb-16">
+            <span className="text-muted-foreground text-sm font-semibold tracking-widest uppercase">Features</span>
+            <h2 className="font-display text-3xl lg:text-5xl font-bold mt-3 mb-4 text-foreground">What Sangpt Can Do</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">Powerful AI capabilities, designed in Freetown for the world.</p>
+          </motion.div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: Bot, label: "Smart Chat", desc: "Context-aware conversations in English & Krio", accent: "from-blue-500/20 to-cyan-500/10" },
+              { icon: Brain, label: "Deep Analysis", desc: "Research & data-driven insights", accent: "from-purple-500/20 to-pink-500/10" },
+              { icon: Zap, label: "Automation", desc: "Workflow triggers & actions", accent: "from-amber-500/20 to-orange-500/10" },
+              { icon: Sparkles, label: "Adaptive AI", desc: "Learns your unique style", accent: "from-emerald-500/20 to-teal-500/10" },
+            ].map((item, i) => (
+              <motion.div key={item.label} {...fadeUp(0.05 + i * 0.05)} className="glass-hover rounded-2xl p-6 group relative overflow-hidden">
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div className="relative">
+                  <div className="w-12 h-12 rounded-xl bg-secondary border border-border flex items-center justify-center mb-4 group-hover:bg-accent transition-colors">
+                    <item.icon className="h-6 w-6 text-foreground" />
+                  </div>
+                  <p className="text-sm font-semibold text-foreground leading-tight">{item.label}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{item.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── KEY CAPABILITIES ─── */}
       <section className="py-24 relative">
         <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 70% 30%, hsla(40, 30%, 92%, 0.4) 0%, transparent 50%)" }} />
@@ -187,17 +209,19 @@ export function HeroSection() {
           </motion.div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { step: "01", icon: Smartphone, title: "Download the App", desc: "Get Sangpt from the Apple App Store or Google Play Store. Installation takes seconds. No account required to get started — just download, open, and go." },
-              { step: "02", icon: MessageSquare, title: "Start a Conversation", desc: "Open Sangpt and begin chatting naturally. Ask questions, give instructions, or describe what you need. The AI understands context and can handle complex, multi-turn conversations." },
-              { step: "03", icon: Globe, title: "Customize & Automate", desc: "Set up plugins, create automation workflows, and personalize your experience. Sangpt learns your preferences over time, becoming more helpful with every interaction." },
+              { step: "01", icon: Smartphone, title: "Download the App", desc: "Get Sangpt from the Apple App Store or Google Play Store. Installation takes seconds. No account required to get started." },
+              { step: "02", icon: MessageSquare, title: "Start a Conversation", desc: "Open Sangpt and begin chatting naturally. The AI understands context and can handle complex, multi-turn conversations." },
+              { step: "03", icon: Globe, title: "Customize & Automate", desc: "Set up plugins, create automation workflows, and personalize. Sangpt learns your preferences over time." },
             ].map((item, i) => (
-              <motion.div key={item.step} {...fadeUp(0.1 + i * 0.08)} className="glass-hover rounded-2xl p-8 text-center group">
-                <div className="text-xs font-bold text-muted-foreground mb-3 tracking-widest">{item.step}</div>
-                <div className="w-14 h-14 rounded-2xl bg-secondary border border-border flex items-center justify-center mx-auto mb-4 group-hover:bg-accent transition-colors">
-                  <item.icon className="h-7 w-7 text-foreground" />
+              <motion.div key={item.step} {...fadeUp(0.1 + i * 0.08)} className="glass-hover rounded-2xl p-8 text-center group relative overflow-hidden">
+                <div className="absolute top-4 right-4 text-6xl font-bold text-foreground/[0.03] font-display">{item.step}</div>
+                <div className="relative">
+                  <div className="w-14 h-14 rounded-2xl bg-secondary border border-border flex items-center justify-center mx-auto mb-4 group-hover:bg-accent transition-colors">
+                    <item.icon className="h-7 w-7 text-foreground" />
+                  </div>
+                  <h3 className="font-display font-semibold text-lg text-foreground mb-3">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
                 </div>
-                <h3 className="font-display font-semibold text-lg text-foreground mb-3">{item.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -212,7 +236,7 @@ export function HeroSection() {
             <span className="text-muted-foreground text-sm font-semibold tracking-widest uppercase">Use Cases</span>
             <h2 className="font-display text-3xl lg:text-5xl font-bold mt-3 mb-4 text-foreground">Built for Everyone</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              No matter your field or expertise level, Sangpt adapts to your unique workflow — from Freetown to the world.
+              No matter your field, Sangpt adapts to your unique workflow — from Freetown to the world.
             </p>
           </motion.div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -247,7 +271,7 @@ export function HeroSection() {
             {[
               { icon: Lock, title: "Zero-Knowledge Architecture", desc: "Your conversations are private by design. We can't read your data — not because of a policy, but because of how the system is built." },
               { icon: Eye, title: "Full Transparency", desc: "Dev-Link operates with full transparency. We publish regular security reports and welcome community review of our privacy practices." },
-              { icon: HeartHandshake, title: "No Data Monetization", desc: "We will never sell, share, or monetize your personal data. Our business model is built on software quality, not surveillance. Your trust is our foundation." },
+              { icon: HeartHandshake, title: "No Data Monetization", desc: "We will never sell, share, or monetize your personal data. Our business model is built on software quality, not surveillance." },
             ].map((item, i) => (
               <motion.div key={item.title} {...fadeUp(0.1 + i * 0.08)} className="glass-hover rounded-2xl p-8 text-center group">
                 <div className="w-14 h-14 rounded-2xl bg-secondary border border-border flex items-center justify-center mx-auto mb-4 group-hover:bg-accent transition-colors">
@@ -271,7 +295,7 @@ export function HeroSection() {
               Go Deeper with Sangpt
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-8 text-base lg:text-lg leading-relaxed">
-              Read insights, updates, and ideas from the Dev-Link team in Freetown. From product announcements to deep dives on responsible AI — stay informed and inspired.
+              Read insights, updates, and ideas from the Dev-Link team in Freetown. From product announcements to deep dives on responsible AI.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/journal" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-foreground text-background font-semibold hover:bg-foreground/90 transition-all text-base">
@@ -285,23 +309,26 @@ export function HeroSection() {
         </div>
       </section>
 
-      {/* ─── CTA ─── */}
+      {/* ─── DOWNLOAD CTA ─── */}
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24">
-          <motion.div {...fadeUp()} className="rounded-3xl p-8 lg:p-16 text-center" style={{ background: "linear-gradient(135deg, hsl(0 0% 9%), hsl(0 0% 18%))" }}>
-            <h2 className="font-display text-3xl lg:text-5xl font-bold text-background mb-4">
-              Download Sierra Leone's AI
-            </h2>
-            <p className="text-background/60 max-w-2xl mx-auto mb-8 text-base lg:text-lg leading-relaxed">
-              Join thousands of users across Sierra Leone and beyond who are already experiencing the future of AI-powered productivity. Available now on the App Store and Google Play.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/download" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-background text-foreground font-semibold hover:bg-background/90 transition-all text-base">
-                <Smartphone className="h-4 w-4" /> Get the App
-              </Link>
-              <Link to="/about" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-background/20 text-background font-semibold hover:bg-background/10 transition-all text-base">
-                Learn More
-              </Link>
+          <motion.div {...fadeUp()} className="rounded-3xl p-8 lg:p-16 text-center relative overflow-hidden" style={{ background: "linear-gradient(135deg, hsl(220 15% 8%), hsl(250 20% 15%), hsl(220 25% 10%))" }}>
+            <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 30% 50%, hsla(220, 80%, 60%, 0.2), transparent 50%), radial-gradient(circle at 70% 50%, hsla(280, 60%, 50%, 0.15), transparent 50%)" }} />
+            <div className="relative">
+              <h2 className="font-display text-3xl lg:text-5xl font-bold text-white mb-4">
+                Download Sierra Leone's AI
+              </h2>
+              <p className="text-white/50 max-w-2xl mx-auto mb-8 text-base lg:text-lg leading-relaxed">
+                Join thousands of users across Sierra Leone and beyond. Available now on the App Store and Google Play.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link to="/download" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-black font-semibold hover:bg-white/90 transition-all text-base">
+                  <Smartphone className="h-4 w-4" /> Get the App
+                </Link>
+                <Link to="/about" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/15 text-white font-semibold hover:bg-white/10 transition-all text-base">
+                  Learn More
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>

@@ -27,7 +27,7 @@ const JournalPage = () => {
               The Sangpt Journal
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto text-base lg:text-lg leading-relaxed">
-              Insights, updates, and ideas from the team building Sangpt. Explore our thinking on AI, privacy, product design, and the future of intelligent software.
+              Insights, updates, and ideas from the team building Sangpt in Freetown. Explore our thinking on AI, privacy, product design, and the future of intelligent software.
             </p>
           </motion.div>
 
@@ -36,27 +36,43 @@ const JournalPage = () => {
             <motion.div {...fadeUp(0.05)}>
               <Link
                 to={`/journal/${featured.slug}`}
-                className="block glass-hover rounded-3xl p-8 lg:p-12 mb-12 group"
+                className="block glass-hover rounded-3xl overflow-hidden mb-12 group"
               >
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="px-3 py-1 rounded-full bg-foreground text-background text-xs font-semibold">
-                    Featured
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-secondary text-muted-foreground text-xs font-medium">
-                    {featured.category}
-                  </span>
-                </div>
-                <h2 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-3 group-hover:text-foreground/80 transition-colors">
-                  {featured.title}
-                </h2>
-                <p className="text-muted-foreground leading-relaxed mb-4 max-w-3xl">
-                  {featured.excerpt}
-                </p>
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                  <span className="flex items-center gap-1.5">
-                    <Clock className="h-3.5 w-3.5" /> {featured.readTime}
-                  </span>
-                  <span>{featured.date}</span>
+                <div className="grid md:grid-cols-2">
+                  {featured.image && (
+                    <div className="aspect-[4/3] md:aspect-auto overflow-hidden">
+                      <img
+                        src={featured.image}
+                        alt={featured.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                  )}
+                  <div className="p-8 lg:p-10 flex flex-col justify-center">
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="px-3 py-1 rounded-full bg-foreground text-background text-xs font-semibold">
+                        Featured
+                      </span>
+                      <span className="px-3 py-1 rounded-full bg-secondary text-muted-foreground text-xs font-medium">
+                        {featured.category}
+                      </span>
+                    </div>
+                    <h2 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-3 group-hover:text-foreground/80 transition-colors">
+                      {featured.title}
+                    </h2>
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      {featured.excerpt}
+                    </p>
+                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1.5">
+                        <Clock className="h-3.5 w-3.5" /> {featured.readTime}
+                      </span>
+                      <span>{featured.date}</span>
+                    </div>
+                    <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground group-hover:gap-2.5 transition-all">
+                      Read Article <ArrowRight className="h-4 w-4" />
+                    </div>
+                  </div>
                 </div>
               </Link>
             </motion.div>
@@ -85,25 +101,36 @@ const JournalPage = () => {
               <motion.div key={article.slug} {...fadeUp(0.12 + i * 0.04)}>
                 <Link
                   to={`/journal/${article.slug}`}
-                  className="block glass-hover rounded-2xl p-6 h-full group"
+                  className="block glass-hover rounded-2xl overflow-hidden h-full group"
                 >
-                  <div className="flex items-center gap-2 mb-3">
-                    <Tag className="h-3.5 w-3.5 text-muted-foreground" />
-                    <span className="text-xs font-medium text-muted-foreground">
-                      {article.category}
-                    </span>
-                  </div>
-                  <h3 className="font-display font-semibold text-foreground mb-2 leading-snug group-hover:text-foreground/80 transition-colors">
-                    {article.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">
-                    {article.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mt-auto">
-                    <span className="flex items-center gap-1">
-                      <Clock className="h-3 w-3" /> {article.readTime}
-                    </span>
-                    <span>{article.date}</span>
+                  {article.image && (
+                    <div className="aspect-[16/10] overflow-hidden">
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Tag className="h-3.5 w-3.5 text-muted-foreground" />
+                      <span className="text-xs font-medium text-muted-foreground">
+                        {article.category}
+                      </span>
+                    </div>
+                    <h3 className="font-display font-semibold text-foreground mb-2 leading-snug group-hover:text-foreground/80 transition-colors">
+                      {article.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">
+                      {article.excerpt}
+                    </p>
+                    <div className="flex items-center justify-between text-xs text-muted-foreground mt-auto">
+                      <span className="flex items-center gap-1">
+                        <Clock className="h-3 w-3" /> {article.readTime}
+                      </span>
+                      <span>{article.date}</span>
+                    </div>
                   </div>
                 </Link>
               </motion.div>

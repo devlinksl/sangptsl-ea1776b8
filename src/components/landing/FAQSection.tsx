@@ -10,7 +10,7 @@ import {
 const faqs = [
   { q: "Can Sangpt be used offline?", a: "Yes, Sangpt has an offline mode that provides core functionality without an internet connection. Some advanced features require connectivity for real-time processing." },
   { q: "Is my data safe with Sangpt?", a: "Absolutely. We use end-to-end encryption and a zero-knowledge architecture. Your data is never shared with third parties and you maintain full control over your information." },
-  { q: "What platforms does Sangpt support?", a: "Sangpt is available on Windows, macOS, and Linux. A mobile version is currently in development and will be released soon." },
+  { q: "What platforms does Sangpt support?", a: "Sangpt is available exclusively on mobile — download it from the Apple App Store (iOS 15+) or Google Play Store (Android 10+). You can also download the APK directly from our website." },
   { q: "Is Sangpt free to use?", a: "Sangpt offers a free tier with essential features. Premium plans unlock advanced capabilities, priority support, and extended usage limits." },
   { q: "How does Sangpt differ from other AI assistants?", a: "Sangpt is built with a privacy-first approach, adapts to your personal style over time, and runs locally on your device for maximum security and speed." },
 ];
