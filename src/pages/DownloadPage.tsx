@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Smartphone, Star, ArrowRight, ChevronLeft, Check, Apple, Play, Download, Shield, Zap, Globe, Lock } from "lucide-react";
+import { Smartphone, Star, ArrowRight, ChevronLeft, Apple, Play, Download, Shield, Zap, Globe, Lock } from "lucide-react";
 import { fadeUp } from "@/lib/animations";
 import { PageLayout } from "@/components/layout/PageLayout";
 import sangptLogo from "@/assets/sangpt-logo.png";
@@ -32,12 +32,12 @@ const DownloadPage = () => {
             >
               {/* Glow effects */}
               <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full" style={{ background: "radial-gradient(circle, hsla(220, 80%, 60%, 0.15), transparent 60%)" }} />
-                <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full" style={{ background: "radial-gradient(circle, hsla(280, 60%, 50%, 0.1), transparent 60%)" }} />
+                <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full" style={{ background: "radial-gradient(circle, hsla(220, 80%, 60%, 0.15), transparent 60%)", filter: "blur(40px)" }} />
+                <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full" style={{ background: "radial-gradient(circle, hsla(280, 60%, 50%, 0.1), transparent 60%)", filter: "blur(40px)" }} />
               </div>
 
               <div className="flex items-center justify-between p-6 relative z-10">
-                <Link to="/" className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors">
+                <Link to="/" className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ background: "hsla(0,0%,100%,0.08)", border: "1px solid hsla(0,0%,100%,0.1)", backdropFilter: "blur(12px)" }}>
                   <ChevronLeft className="h-4 w-4 text-white" />
                 </Link>
                 <div className="flex items-center gap-1.5">
@@ -70,7 +70,12 @@ const DownloadPage = () => {
                 <a
                   href={APK_URL}
                   download="sangpt.apk"
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white text-black font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.15)] group"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-full font-semibold text-sm transition-all duration-300 group hover:scale-[1.02]"
+                  style={{
+                    background: "hsla(0, 0%, 100%, 0.95)",
+                    color: "hsl(0, 0%, 9%)",
+                    boxShadow: "0 0 0 1px hsla(0,0%,100%,0.3), 0 4px 20px hsla(0,0%,0%,0.15), 0 0 40px hsla(0,0%,100%,0.08)",
+                  }}
                 >
                   <Download className="h-4 w-4" />
                   Download APK
@@ -90,21 +95,21 @@ const DownloadPage = () => {
                 </p>
               </motion.div>
 
-              {/* Store Buttons */}
+              {/* Store Buttons — Glass Cards */}
               <motion.a
                 {...fadeUp(0.15)}
                 href={APK_URL}
                 download="sangpt.apk"
                 className="glass-hover rounded-2xl p-5 flex items-center gap-4 group cursor-pointer"
               >
-                <div className="w-14 h-14 rounded-xl bg-foreground flex items-center justify-center group-hover:scale-105 transition-transform">
+                <div className="w-14 h-14 rounded-xl bg-foreground flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
                   <Download className="h-7 w-7 text-background" />
                 </div>
                 <div className="flex-1">
                   <h3 className="font-display font-semibold text-foreground text-lg">Direct Download</h3>
                   <p className="text-xs text-muted-foreground">APK File · Android · v2.1.0 · 95 MB</p>
                 </div>
-                <div className="px-5 py-2.5 rounded-xl bg-foreground text-background text-sm font-semibold">
+                <div className="px-5 py-2.5 rounded-full bg-foreground text-background text-sm font-semibold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_16px_hsla(0,0%,0%,0.12)]">
                   Get APK
                 </div>
               </motion.a>
@@ -114,14 +119,14 @@ const DownloadPage = () => {
                 href="#"
                 className="glass-hover rounded-2xl p-5 flex items-center gap-4 group cursor-pointer"
               >
-                <div className="w-14 h-14 rounded-xl bg-secondary border border-border flex items-center justify-center group-hover:bg-accent transition-colors">
+                <div className="w-14 h-14 rounded-xl glass-icon flex items-center justify-center">
                   <Apple className="h-7 w-7 text-foreground" />
                 </div>
                 <div className="flex-1">
                   <h3 className="font-display font-semibold text-foreground text-lg">App Store</h3>
                   <p className="text-xs text-muted-foreground">iOS 15+ · v2.1.0 · 120 MB</p>
                 </div>
-                <div className="px-5 py-2.5 rounded-xl bg-secondary text-foreground text-sm font-semibold border border-border">
+                <div className="glass-btn px-5 py-2.5 rounded-full text-foreground text-sm font-semibold">
                   Get
                 </div>
               </motion.a>
@@ -131,20 +136,20 @@ const DownloadPage = () => {
                 href="#"
                 className="glass-hover rounded-2xl p-5 flex items-center gap-4 group cursor-pointer"
               >
-                <div className="w-14 h-14 rounded-xl bg-secondary border border-border flex items-center justify-center group-hover:bg-accent transition-colors">
+                <div className="w-14 h-14 rounded-xl glass-icon flex items-center justify-center">
                   <Play className="h-7 w-7 text-foreground" />
                 </div>
                 <div className="flex-1">
                   <h3 className="font-display font-semibold text-foreground text-lg">Google Play</h3>
                   <p className="text-xs text-muted-foreground">Android 10+ · v2.1.0 · 95 MB</p>
                 </div>
-                <div className="px-5 py-2.5 rounded-xl bg-secondary text-foreground text-sm font-semibold border border-border">
+                <div className="glass-btn px-5 py-2.5 rounded-full text-foreground text-sm font-semibold">
                   Get
                 </div>
               </motion.a>
 
               {/* Device Requirements */}
-              <motion.div {...fadeUp(0.3)} className="glass rounded-2xl p-5">
+              <motion.div {...fadeUp(0.3)} className="glass-strong rounded-2xl p-5">
                 <h3 className="font-display font-semibold mb-3 text-foreground text-sm">Device Requirements</h3>
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div><span className="text-foreground font-medium">iOS:</span> iPhone 8 or later, iOS 15+</div>
@@ -161,7 +166,7 @@ const DownloadPage = () => {
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {features.map((f, i) => (
                 <motion.div key={f.title} {...fadeUp(0.4 + i * 0.05)} className="glass-hover rounded-2xl p-6 text-center group">
-                  <div className="w-12 h-12 rounded-xl bg-secondary border border-border flex items-center justify-center mx-auto mb-4 group-hover:bg-accent transition-colors">
+                  <div className="w-12 h-12 rounded-xl glass-icon flex items-center justify-center mx-auto mb-4">
                     <f.icon className="h-6 w-6 text-foreground" />
                   </div>
                   <h3 className="font-display font-semibold text-foreground mb-1">{f.title}</h3>
@@ -172,7 +177,7 @@ const DownloadPage = () => {
           </motion.div>
 
           {/* Why Mobile Only */}
-          <motion.div {...fadeUp(0.5)} className="glass rounded-3xl p-8 lg:p-12 text-center max-w-3xl mx-auto">
+          <motion.div {...fadeUp(0.5)} className="glass-strong rounded-3xl p-8 lg:p-12 text-center max-w-3xl mx-auto">
             <Smartphone className="h-8 w-8 text-foreground mx-auto mb-4" />
             <h2 className="font-display text-2xl font-bold text-foreground mb-4">Why Mobile First?</h2>
             <p className="text-muted-foreground leading-relaxed">

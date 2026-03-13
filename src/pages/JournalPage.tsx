@@ -20,7 +20,7 @@ const JournalPage = () => {
         <div className="mx-auto max-w-6xl px-4 lg:px-8">
           {/* Hero */}
           <motion.div {...fadeUp()} className="text-center mb-16">
-            <div className="w-14 h-14 rounded-2xl bg-secondary border border-border flex items-center justify-center mx-auto mb-6">
+            <div className="w-14 h-14 rounded-2xl glass-icon flex items-center justify-center mx-auto mb-6">
               <BookOpen className="h-7 w-7 text-foreground" />
             </div>
             <h1 className="font-display text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -53,11 +53,11 @@ const JournalPage = () => {
                       <span className="px-3 py-1 rounded-full bg-foreground text-background text-xs font-semibold">
                         Featured
                       </span>
-                      <span className="px-3 py-1 rounded-full bg-secondary text-muted-foreground text-xs font-medium">
+                      <span className="px-3 py-1 rounded-full text-xs font-medium" style={{ background: "hsla(0,0%,100%,0.5)", border: "1px solid hsla(0,0%,100%,0.3)", color: "hsl(0,0%,45%)" }}>
                         {featured.category}
                       </span>
                     </div>
-                    <h2 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-3 group-hover:text-foreground/80 transition-colors">
+                    <h2 className="font-display text-2xl lg:text-3xl font-bold text-foreground mb-3 group-hover:text-foreground/80 transition-colors duration-300">
                       {featured.title}
                     </h2>
                     <p className="text-muted-foreground leading-relaxed mb-4">
@@ -69,7 +69,7 @@ const JournalPage = () => {
                       </span>
                       <span>{featured.date}</span>
                     </div>
-                    <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground group-hover:gap-2.5 transition-all">
+                    <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-foreground group-hover:gap-2.5 transition-all duration-300">
                       Read Article <ArrowRight className="h-4 w-4" />
                     </div>
                   </div>
@@ -78,16 +78,16 @@ const JournalPage = () => {
             </motion.div>
           )}
 
-          {/* Category Filters */}
+          {/* Category Filters — Glass Pills */}
           <motion.div {...fadeUp(0.1)} className="flex flex-wrap gap-2 mb-10">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   activeCategory === cat
-                    ? "bg-foreground text-background"
-                    : "bg-secondary text-muted-foreground hover:text-foreground hover:bg-secondary/80"
+                    ? "bg-foreground text-background shadow-[0_0_16px_hsla(0,0%,0%,0.12)]"
+                    : "glass-btn text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {cat}
@@ -119,7 +119,7 @@ const JournalPage = () => {
                         {article.category}
                       </span>
                     </div>
-                    <h3 className="font-display font-semibold text-foreground mb-2 leading-snug group-hover:text-foreground/80 transition-colors">
+                    <h3 className="font-display font-semibold text-foreground mb-2 leading-snug group-hover:text-foreground/80 transition-colors duration-300">
                       {article.title}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed mb-4 line-clamp-3">
