@@ -26,11 +26,11 @@ export function FAQSection() {
           </h2>
         </motion.div>
 
-        <motion.div {...fadeUp(0.1)} className="glass rounded-2xl p-6 lg:p-8">
+        <motion.div {...fadeUp(0.1)} className="glass-strong rounded-2xl p-6 lg:p-8">
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border-border/50">
-                <AccordionTrigger className="text-left font-display font-medium hover:no-underline hover:text-foreground/70 transition-colors py-5 text-foreground">
+              <AccordionItem key={i} value={`faq-${i}`} className="border-b" style={{ borderColor: "hsla(0, 0%, 100%, 0.15)" }}>
+                <AccordionTrigger className="text-left font-display font-medium hover:no-underline hover:text-foreground/70 transition-colors duration-300 py-5 text-foreground">
                   {faq.q}
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-5">

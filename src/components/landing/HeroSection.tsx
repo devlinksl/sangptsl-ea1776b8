@@ -43,6 +43,10 @@ export function HeroSection() {
           </Suspense>
         </div>
 
+        {/* Ambient glow orbs */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 glow-orb" style={{ background: "hsla(220, 70%, 50%, 0.08)" }} />
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 glow-orb" style={{ background: "hsla(280, 60%, 50%, 0.06)" }} />
+
         {/* Gradient overlays for text readability */}
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(90deg, hsla(220, 15%, 8%, 0.85) 0%, hsla(220, 15%, 8%, 0.4) 50%, transparent 100%)" }} />
         <div className="absolute bottom-0 left-0 right-0 h-32 z-[1]" style={{ background: "linear-gradient(to top, hsl(0, 0%, 98%), transparent)" }} />
@@ -50,7 +54,16 @@ export function HeroSection() {
         <div className="relative z-[2] mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24 w-full">
           <div className="max-w-2xl">
             <motion.div {...fadeUp(0)} className="flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white/80 text-xs font-semibold mb-8 w-fit">
+              {/* Glass badge */}
+              <div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white/80 text-xs font-semibold mb-8 w-fit"
+                style={{
+                  background: "hsla(0, 0%, 100%, 0.08)",
+                  border: "1px solid hsla(0, 0%, 100%, 0.15)",
+                  backdropFilter: "blur(16px)",
+                  boxShadow: "inset 0 1px 0 hsla(0, 0%, 100%, 0.1), 0 4px 16px hsla(0, 0%, 0%, 0.2)",
+                }}
+              >
                 <img src={devlinkLogo} alt="Dev-Link" className="h-4 w-4 rounded" />
                 <span>Built by Dev-Link</span>
                 <span className="ml-1">🇸🇱</span>
@@ -67,10 +80,24 @@ export function HeroSection() {
                 The first AI assistant built in Sierra Leone, by Sierra Leoneans, for the world. Smart, adaptive, and private — download now on the App Store & Google Play.
               </p>
 
+              {/* Glass CTA buttons */}
               <div className="flex flex-wrap gap-3 mb-12">
                 <Link
                   to="/download"
-                  className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-2xl bg-white text-black font-semibold text-sm hover:bg-white/90 transition-all hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-[1.02]"
+                  className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-sm transition-all duration-300"
+                  style={{
+                    background: "hsla(0, 0%, 100%, 0.95)",
+                    color: "hsl(0, 0%, 9%)",
+                    boxShadow: "0 0 0 1px hsla(0,0%,100%,0.3), 0 4px 20px hsla(0,0%,0%,0.15), 0 0 40px hsla(0,0%,100%,0.08)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateY(-2px) scale(1.03)";
+                    e.currentTarget.style.boxShadow = "0 0 0 1px hsla(0,0%,100%,0.4), 0 8px 30px hsla(0,0%,0%,0.2), 0 0 60px hsla(0,0%,100%,0.12)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "";
+                    e.currentTarget.style.boxShadow = "0 0 0 1px hsla(0,0%,100%,0.3), 0 4px 20px hsla(0,0%,0%,0.15), 0 0 40px hsla(0,0%,100%,0.08)";
+                  }}
                 >
                   <Download className="h-4 w-4" />
                   Download the App
@@ -78,22 +105,47 @@ export function HeroSection() {
                 </Link>
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-2xl border border-white/15 text-white font-semibold text-sm hover:bg-white/10 backdrop-blur-sm transition-all"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm text-white transition-all duration-300"
+                  style={{
+                    background: "hsla(0, 0%, 100%, 0.08)",
+                    border: "1px solid hsla(0, 0%, 100%, 0.15)",
+                    backdropFilter: "blur(16px)",
+                    boxShadow: "inset 0 1px 0 hsla(0, 0%, 100%, 0.1)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "hsla(0, 0%, 100%, 0.15)";
+                    e.currentTarget.style.borderColor = "hsla(0, 0%, 100%, 0.25)";
+                    e.currentTarget.style.transform = "translateY(-1px) scale(1.02)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "hsla(0, 0%, 100%, 0.08)";
+                    e.currentTarget.style.borderColor = "hsla(0, 0%, 100%, 0.15)";
+                    e.currentTarget.style.transform = "";
+                  }}
                 >
                   <Play className="h-4 w-4" />
                   Learn More
                 </Link>
               </div>
 
-              {/* Stats */}
-              <motion.div {...fadeUp(0.3)} className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {/* Glass Stats Panel */}
+              <motion.div
+                {...fadeUp(0.3)}
+                className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-2xl"
+                style={{
+                  background: "hsla(0, 0%, 100%, 0.06)",
+                  border: "1px solid hsla(0, 0%, 100%, 0.1)",
+                  backdropFilter: "blur(20px)",
+                  boxShadow: "inset 0 1px 0 hsla(0, 0%, 100%, 0.08), 0 8px 32px hsla(0, 0%, 0%, 0.2)",
+                }}
+              >
                 {[
                   { value: "🇸🇱", label: "Made in Salone" },
                   { value: "10K+", label: "Downloads" },
                   { value: "99.9%", label: "Uptime" },
                   { value: "∞", label: "Possibilities" },
                 ].map((stat) => (
-                  <div key={stat.label} className="text-center">
+                  <div key={stat.label} className="text-center py-2">
                     <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{stat.value}</div>
                     <div className="text-[11px] text-white/40 mt-1 font-medium uppercase tracking-wider">{stat.label}</div>
                   </div>
@@ -106,14 +158,17 @@ export function HeroSection() {
 
       {/* ─── WHAT IS SANGPT? ─── */}
       <section className="py-24 relative">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 30% 50%, hsla(35, 40%, 93%, 0.5) 0%, transparent 60%)" }} />
+        {/* Ambient orbs */}
+        <div className="glow-orb w-[500px] h-[500px] top-0 left-[10%]" style={{ background: "hsla(35, 50%, 85%, 0.25)" }} />
+        <div className="glow-orb w-[300px] h-[300px] bottom-10 right-[15%]" style={{ background: "hsla(25, 40%, 88%, 0.2)" }} />
+
         <div className="relative mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24">
           <motion.div {...fadeUp()} className="text-center mb-12">
             <span className="text-muted-foreground text-sm font-semibold tracking-widest uppercase">About</span>
             <h2 className="font-display text-3xl lg:text-5xl font-bold mt-3 mb-4 text-foreground">What is Sangpt?</h2>
           </motion.div>
           <div className="grid lg:grid-cols-2 gap-8 items-start">
-            <motion.div {...fadeUp(0.1)} className="glass rounded-3xl p-8 lg:p-10">
+            <motion.div {...fadeUp(0.1)} className="glass-strong rounded-3xl p-8 lg:p-10">
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Sangpt is Sierra Leone's first homegrown AI assistant, proudly built by <strong className="text-foreground">Dev-Link</strong> — a team of engineers, designers, and innovators based in Freetown. Sangpt represents a milestone for West African technology: a world-class AI product conceived, designed, and developed entirely in Sierra Leone.
               </p>
@@ -124,7 +179,7 @@ export function HeroSection() {
                 Sangpt isn't just another chatbot — it's a comprehensive productivity platform that proves world-class innovation can come from anywhere, including Sierra Leone. Available on the App Store and Google Play.
               </p>
             </motion.div>
-            <motion.div {...fadeUp(0.2)} className="glass rounded-3xl p-8 lg:p-10">
+            <motion.div {...fadeUp(0.2)} className="glass-strong rounded-3xl p-8 lg:p-10">
               <h3 className="font-display text-xl font-bold text-foreground mb-4 flex items-center gap-2">
                 <Lightbulb className="h-5 w-5" /> Why Sangpt Exists
               </h3>
@@ -152,15 +207,15 @@ export function HeroSection() {
           </motion.div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { icon: Bot, label: "Smart Chat", desc: "Context-aware conversations in English & Krio", accent: "from-blue-500/20 to-cyan-500/10" },
-              { icon: Brain, label: "Deep Analysis", desc: "Research & data-driven insights", accent: "from-purple-500/20 to-pink-500/10" },
-              { icon: Zap, label: "Automation", desc: "Workflow triggers & actions", accent: "from-amber-500/20 to-orange-500/10" },
-              { icon: Sparkles, label: "Adaptive AI", desc: "Learns your unique style", accent: "from-emerald-500/20 to-teal-500/10" },
+              { icon: Bot, label: "Smart Chat", desc: "Context-aware conversations in English & Krio", accent: "hsla(220, 80%, 60%, 0.08)" },
+              { icon: Brain, label: "Deep Analysis", desc: "Research & data-driven insights", accent: "hsla(280, 60%, 50%, 0.08)" },
+              { icon: Zap, label: "Automation", desc: "Workflow triggers & actions", accent: "hsla(35, 80%, 50%, 0.08)" },
+              { icon: Sparkles, label: "Adaptive AI", desc: "Learns your unique style", accent: "hsla(160, 60%, 40%, 0.08)" },
             ].map((item, i) => (
               <motion.div key={item.label} {...fadeUp(0.05 + i * 0.05)} className="glass-hover rounded-2xl p-6 group relative overflow-hidden">
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: item.accent }} />
                 <div className="relative">
-                  <div className="w-12 h-12 rounded-xl bg-secondary border border-border flex items-center justify-center mb-4 group-hover:bg-accent transition-colors">
+                  <div className="w-12 h-12 rounded-xl glass-icon flex items-center justify-center mb-4">
                     <item.icon className="h-6 w-6 text-foreground" />
                   </div>
                   <p className="text-sm font-semibold text-foreground leading-tight">{item.label}</p>
@@ -174,7 +229,7 @@ export function HeroSection() {
 
       {/* ─── KEY CAPABILITIES ─── */}
       <section className="py-24 relative">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 70% 30%, hsla(40, 30%, 92%, 0.4) 0%, transparent 50%)" }} />
+        <div className="glow-orb w-[400px] h-[400px] top-20 right-[5%]" style={{ background: "hsla(40, 40%, 85%, 0.2)" }} />
         <div className="relative mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <span className="text-muted-foreground text-sm font-semibold tracking-widest uppercase">Capabilities</span>
@@ -186,7 +241,7 @@ export function HeroSection() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {capabilities.map((f, i) => (
               <motion.div key={f.title} {...fadeUp(i * 0.06)} className="glass-hover rounded-2xl p-6 group">
-                <div className="w-12 h-12 rounded-xl bg-secondary border border-border flex items-center justify-center mb-4 group-hover:bg-accent transition-colors">
+                <div className="w-12 h-12 rounded-xl glass-icon flex items-center justify-center mb-4">
                   <f.icon className="h-6 w-6 text-foreground" />
                 </div>
                 <h3 className="font-display font-semibold text-base mb-2 text-foreground">{f.title}</h3>
@@ -216,7 +271,7 @@ export function HeroSection() {
               <motion.div key={item.step} {...fadeUp(0.1 + i * 0.08)} className="glass-hover rounded-2xl p-8 text-center group relative overflow-hidden">
                 <div className="absolute top-4 right-4 text-6xl font-bold text-foreground/[0.03] font-display">{item.step}</div>
                 <div className="relative">
-                  <div className="w-14 h-14 rounded-2xl bg-secondary border border-border flex items-center justify-center mx-auto mb-4 group-hover:bg-accent transition-colors">
+                  <div className="w-14 h-14 rounded-2xl glass-icon flex items-center justify-center mx-auto mb-4">
                     <item.icon className="h-7 w-7 text-foreground" />
                   </div>
                   <h3 className="font-display font-semibold text-lg text-foreground mb-3">{item.title}</h3>
@@ -230,7 +285,7 @@ export function HeroSection() {
 
       {/* ─── USE CASES ─── */}
       <section className="py-24 relative">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 80%, hsla(30, 30%, 93%, 0.5) 0%, transparent 50%)" }} />
+        <div className="glow-orb w-[500px] h-[500px] bottom-0 left-[20%]" style={{ background: "hsla(30, 40%, 88%, 0.2)" }} />
         <div className="relative mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24">
           <motion.div {...fadeUp()} className="text-center mb-16">
             <span className="text-muted-foreground text-sm font-semibold tracking-widest uppercase">Use Cases</span>
@@ -243,7 +298,7 @@ export function HeroSection() {
             {useCases.map((uc, i) => (
               <motion.div key={uc.title} {...fadeUp(0.1 + i * 0.08)} className="glass-hover rounded-2xl p-8 group">
                 <div className="flex items-start gap-5">
-                  <div className="w-14 h-14 rounded-2xl bg-secondary border border-border flex items-center justify-center flex-shrink-0 group-hover:bg-accent transition-colors">
+                  <div className="w-14 h-14 rounded-2xl glass-icon flex items-center justify-center flex-shrink-0">
                     <uc.icon className="h-7 w-7 text-foreground" />
                   </div>
                   <div>
@@ -274,7 +329,7 @@ export function HeroSection() {
               { icon: HeartHandshake, title: "No Data Monetization", desc: "We will never sell, share, or monetize your personal data. Our business model is built on software quality, not surveillance." },
             ].map((item, i) => (
               <motion.div key={item.title} {...fadeUp(0.1 + i * 0.08)} className="glass-hover rounded-2xl p-8 text-center group">
-                <div className="w-14 h-14 rounded-2xl bg-secondary border border-border flex items-center justify-center mx-auto mb-4 group-hover:bg-accent transition-colors">
+                <div className="w-14 h-14 rounded-2xl glass-icon flex items-center justify-center mx-auto mb-4">
                   <item.icon className="h-7 w-7 text-foreground" />
                 </div>
                 <h3 className="font-display font-semibold text-lg text-foreground mb-3">{item.title}</h3>
@@ -287,9 +342,9 @@ export function HeroSection() {
 
       {/* ─── JOURNAL CTA ─── */}
       <section className="py-24 relative">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 50%, hsla(35, 35%, 92%, 0.5) 0%, transparent 55%)" }} />
+        <div className="glow-orb w-[400px] h-[400px] top-10 left-[40%]" style={{ background: "hsla(35, 45%, 85%, 0.2)" }} />
         <div className="relative mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24">
-          <motion.div {...fadeUp()} className="glass rounded-3xl p-10 lg:p-16 text-center">
+          <motion.div {...fadeUp()} className="glass-strong rounded-3xl p-10 lg:p-16 text-center">
             <span className="text-muted-foreground text-sm font-semibold tracking-widest uppercase mb-3 block">Journal</span>
             <h2 className="font-display text-3xl lg:text-5xl font-bold text-foreground mb-4">
               Go Deeper with Sangpt
@@ -298,10 +353,10 @@ export function HeroSection() {
               Read insights, updates, and ideas from the Dev-Link team in Freetown. From product announcements to deep dives on responsible AI.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/journal" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-foreground text-background font-semibold hover:bg-foreground/90 transition-all text-base">
+              <Link to="/journal" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-foreground text-background font-semibold hover:bg-foreground/90 transition-all duration-300 text-base hover:scale-105 hover:shadow-[0_0_24px_hsla(0,0%,0%,0.15)]">
                 Read the Sangpt Journal <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link to="/about" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-border text-foreground font-semibold hover:bg-secondary transition-all text-base">
+              <Link to="/about" className="glass-btn inline-flex items-center gap-2 px-8 py-4 rounded-full text-foreground font-semibold text-base">
                 Learn How Sangpt Works
               </Link>
             </div>
@@ -313,7 +368,9 @@ export function HeroSection() {
       <section className="py-24">
         <div className="mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24">
           <motion.div {...fadeUp()} className="rounded-3xl p-8 lg:p-16 text-center relative overflow-hidden" style={{ background: "linear-gradient(135deg, hsl(220 15% 8%), hsl(250 20% 15%), hsl(220 25% 10%))" }}>
-            <div className="absolute inset-0 opacity-30" style={{ background: "radial-gradient(circle at 30% 50%, hsla(220, 80%, 60%, 0.2), transparent 50%), radial-gradient(circle at 70% 50%, hsla(280, 60%, 50%, 0.15), transparent 50%)" }} />
+            {/* Glow orbs inside dark card */}
+            <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, hsla(220, 80%, 60%, 0.15), transparent 60%)", filter: "blur(40px)" }} />
+            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, hsla(280, 60%, 50%, 0.1), transparent 60%)", filter: "blur(40px)" }} />
             <div className="relative">
               <h2 className="font-display text-3xl lg:text-5xl font-bold text-white mb-4">
                 Download Sierra Leone's AI
@@ -322,10 +379,27 @@ export function HeroSection() {
                 Join thousands of users across Sierra Leone and beyond. Available now on the App Store and Google Play.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link to="/download" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-white text-black font-semibold hover:bg-white/90 transition-all text-base">
+                <Link
+                  to="/download"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 hover:scale-105"
+                  style={{
+                    background: "hsla(0, 0%, 100%, 0.95)",
+                    color: "hsl(0, 0%, 9%)",
+                    boxShadow: "0 0 0 1px hsla(0,0%,100%,0.3), 0 4px 20px hsla(0,0%,0%,0.15), 0 0 40px hsla(0,0%,100%,0.08)",
+                  }}
+                >
                   <Smartphone className="h-4 w-4" /> Get the App
                 </Link>
-                <Link to="/about" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-white/15 text-white font-semibold hover:bg-white/10 transition-all text-base">
+                <Link
+                  to="/about"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base text-white transition-all duration-300 hover:scale-105"
+                  style={{
+                    background: "hsla(0, 0%, 100%, 0.08)",
+                    border: "1px solid hsla(0, 0%, 100%, 0.15)",
+                    backdropFilter: "blur(16px)",
+                    boxShadow: "inset 0 1px 0 hsla(0, 0%, 100%, 0.1)",
+                  }}
+                >
                   Learn More
                 </Link>
               </div>

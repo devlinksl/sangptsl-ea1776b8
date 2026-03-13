@@ -58,15 +58,15 @@ function SidebarInner({ expanded, onToggle, onNavClick }: SidebarContentProps) {
 
     const inner = (
       <div
-        className={`group flex items-center gap-3 rounded-2xl transition-all duration-200 cursor-pointer ${
+        className={`group flex items-center gap-3 rounded-2xl transition-all duration-300 cursor-pointer ${
           expanded ? "px-4 py-3" : "justify-center p-3"
         } ${
           active
             ? "bg-foreground text-background shadow-md"
-            : "text-muted-foreground hover:text-foreground hover:bg-secondary/80 hover:shadow-sm"
+            : "text-muted-foreground hover:text-foreground hover:bg-white/50 hover:shadow-[inset_0_1px_0_hsla(0,0%,100%,0.4),0_2px_8px_hsla(0,0%,0%,0.04)]"
         }`}
       >
-        <link.icon className={`h-[18px] w-[18px] flex-shrink-0 transition-all duration-200 ${
+        <link.icon className={`h-[18px] w-[18px] flex-shrink-0 transition-all duration-300 ${
           active ? "text-background" : "group-hover:scale-110"
         }`} />
         {expanded && <span className="text-sm font-medium">{link.label}</span>}
@@ -97,7 +97,7 @@ function SidebarInner({ expanded, onToggle, onNavClick }: SidebarContentProps) {
         )}
       </div>
 
-      <div className="h-px mx-4 bg-border/40" />
+      <div className="h-px mx-4" style={{ background: "linear-gradient(90deg, transparent, hsla(0,0%,0%,0.06), transparent)" }} />
 
       <div className={`pt-5 pb-2 ${expanded ? "px-5" : "px-3"}`}>
         <span className="text-[10px] font-semibold text-muted-foreground tracking-widest uppercase">
@@ -109,7 +109,7 @@ function SidebarInner({ expanded, onToggle, onNavClick }: SidebarContentProps) {
         {mainLinks.map(renderLink)}
       </nav>
 
-      <div className="mx-5 my-4 h-px bg-border/40" />
+      <div className="mx-5 my-4 h-px" style={{ background: "linear-gradient(90deg, transparent, hsla(0,0%,0%,0.06), transparent)" }} />
 
       <div className={`pb-2 ${expanded ? "px-5" : "px-3"}`}>
         <span className="text-[10px] font-semibold text-muted-foreground tracking-widest uppercase">
@@ -126,7 +126,7 @@ function SidebarInner({ expanded, onToggle, onNavClick }: SidebarContentProps) {
       <div className="px-3 pb-4 hidden lg:block">
         <button
           onClick={onToggle}
-          className={`flex items-center gap-3 rounded-2xl transition-all duration-200 text-muted-foreground hover:text-foreground hover:bg-secondary/80 w-full ${
+          className={`flex items-center gap-3 rounded-2xl transition-all duration-300 text-muted-foreground hover:text-foreground hover:bg-white/50 w-full ${
             expanded ? "px-4 py-3" : "justify-center p-3"
           }`}
         >
@@ -155,11 +155,11 @@ export function Sidebar() {
           expanded ? "w-60" : "w-[72px]"
         }`}
         style={{
-          background: "hsla(0, 0%, 100%, 0.75)",
-          backdropFilter: "blur(28px)",
-          WebkitBackdropFilter: "blur(28px)",
-          borderRight: "1px solid hsla(0, 0%, 0%, 0.06)",
-          boxShadow: "4px 0 30px hsla(0, 0%, 0%, 0.04)",
+          background: "hsla(0, 0%, 100%, 0.4)",
+          backdropFilter: "blur(40px) saturate(1.3)",
+          WebkitBackdropFilter: "blur(40px) saturate(1.3)",
+          borderRight: "1px solid hsla(0, 0%, 100%, 0.25)",
+          boxShadow: "4px 0 30px hsla(0, 0%, 0%, 0.03), inset -1px 0 0 hsla(0, 0%, 100%, 0.15)",
         }}
       >
         <SidebarInner expanded={expanded} onToggle={() => setExpanded(!expanded)} />
@@ -167,7 +167,7 @@ export function Sidebar() {
 
       <button
         onClick={() => setMobileOpen(true)}
-        className="lg:hidden fixed top-[18px] left-4 z-50 p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
+        className="lg:hidden fixed top-[18px] left-4 z-50 p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-white/50 transition-all duration-300"
         aria-label="Open sidebar"
       >
         <Menu className="h-5 w-5" />
@@ -191,16 +191,16 @@ export function Sidebar() {
               transition={{ type: "spring", damping: 28, stiffness: 300 }}
               className="lg:hidden fixed left-0 top-0 bottom-0 z-[70] w-72 flex flex-col overflow-y-auto"
               style={{
-                background: "hsla(0, 0%, 100%, 0.92)",
-                backdropFilter: "blur(32px)",
-                WebkitBackdropFilter: "blur(32px)",
-                borderRight: "1px solid hsla(0, 0%, 0%, 0.06)",
-                boxShadow: "4px 0 40px hsla(0, 0%, 0%, 0.1)",
+                background: "hsla(0, 0%, 100%, 0.65)",
+                backdropFilter: "blur(40px) saturate(1.4)",
+                WebkitBackdropFilter: "blur(40px) saturate(1.4)",
+                borderRight: "1px solid hsla(0, 0%, 100%, 0.3)",
+                boxShadow: "4px 0 40px hsla(0, 0%, 0%, 0.08), inset -1px 0 0 hsla(0, 0%, 100%, 0.2)",
               }}
             >
               <button
                 onClick={() => setMobileOpen(false)}
-                className="absolute top-4 right-4 p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-secondary/80 transition-colors"
+                className="absolute top-4 right-4 p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-white/50 transition-all duration-300"
                 aria-label="Close sidebar"
               >
                 <X className="h-5 w-5" />
