@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -148,6 +148,13 @@ export function Sidebar() {
   const [expanded, setExpanded] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  // Listen for header toggle event
+  useEffect(() => {
+    const handler = () => setMobileOpen(true);
+    window.addEventListener("toggle-sidebar", handler);
+    return () => window.removeEventListener("toggle-sidebar", handler);
+  }, []);
+
   return (
     <>
       <aside
@@ -164,14 +171,6 @@ export function Sidebar() {
       >
         <SidebarInner expanded={expanded} onToggle={() => setExpanded(!expanded)} />
       </aside>
-
-      <button
-        onClick={() => setMobileOpen(true)}
-        className="lg:hidden fixed top-[18px] left-4 z-50 p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-white/50 transition-all duration-300"
-        aria-label="Open sidebar"
-      >
-        <Menu className="h-5 w-5" />
-      </button>
 
       <AnimatePresence>
         {mobileOpen && (

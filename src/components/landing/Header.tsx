@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Menu } from "lucide-react";
 import sangptLogo from "@/assets/sangpt-logo.png";
 
 const navLinks = [
@@ -23,8 +24,18 @@ export function Header() {
         boxShadow: "0 4px 30px hsla(0, 0%, 0%, 0.04), inset 0 -1px 0 hsla(0, 0%, 100%, 0.15)",
       }}
     >
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:px-8">
-        <div className="w-10 lg:hidden" />
+      <div className="mx-auto flex h-16 max-w-7xl items-center px-4 lg:px-8 gap-4">
+        {/* Mobile sidebar toggle — visible & accessible */}
+        <button
+          className="lg:hidden flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-200 hover:bg-foreground/5 active:scale-95 flex-shrink-0"
+          onClick={() => {
+            // Dispatch custom event for sidebar
+            window.dispatchEvent(new CustomEvent("toggle-sidebar"));
+          }}
+          aria-label="Open menu"
+        >
+          <Menu className="h-5 w-5 text-foreground" />
+        </button>
 
         <Link to="/" className="flex items-center gap-2.5 group">
           <img src={sangptLogo} alt="Sangpt" className="h-9 w-9 rounded-xl transition-transform duration-300 group-hover:scale-110" />
@@ -32,6 +43,9 @@ export function Header() {
             Sangpt
           </span>
         </Link>
+
+        {/* Spacer */}
+        <div className="flex-1" />
 
         <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (

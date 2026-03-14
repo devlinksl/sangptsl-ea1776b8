@@ -45,8 +45,10 @@ export function HeroSection() {
         {/* Future video layer — add <video> here when ready */}
         <div className="absolute inset-0 z-[1]" aria-hidden="true" data-slot="video-bg" />
 
-        {/* Bottom fade to page bg */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 z-[2]" style={{ background: "linear-gradient(to top, hsl(0, 0%, 98%), transparent)" }} />
+        {/* Smooth gradient transition from dark hero to light content — no harsh line */}
+        <div className="absolute bottom-0 left-0 right-0 h-[200px] z-[2]" style={{
+          background: "linear-gradient(to top, hsl(0, 0%, 98%) 0%, hsla(0, 0%, 98%, 0.8) 30%, hsla(0, 0%, 98%, 0.3) 60%, transparent 100%)",
+        }} />
 
         <div className="relative z-[3] mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24 w-full">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -100,11 +102,8 @@ export function HeroSection() {
                 </Link>
               </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl" style={{
-                background: "hsla(0, 0%, 100%, 0.03)",
-                border: "1px solid hsla(0, 0%, 100%, 0.06)",
-              }}>
+              {/* Stats — true glass panel */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-2xl hero-glass">
                 {[
                   { value: "🇸🇱", label: "Made in Salone" },
                   { value: "10K+", label: "Downloads" },
