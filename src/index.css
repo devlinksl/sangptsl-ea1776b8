@@ -173,4 +173,106 @@
     filter: blur(80px);
     opacity: 0.4;
   }
+
+  /* ── Animated gradient background ── */
+  @keyframes hero-gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    25% {
+      background-position: 50% 0%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    75% {
+      background-position: 50% 100%;
+    }
+  }
+
+  .hero-gradient-bg {
+    background: linear-gradient(
+      135deg,
+      hsl(225 25% 6%) 0%,
+      hsl(250 30% 12%) 20%,
+      hsl(220 35% 10%) 40%,
+      hsl(270 25% 14%) 60%,
+      hsl(230 30% 8%) 80%,
+      hsl(245 20% 10%) 100%
+    );
+    background-size: 300% 300%;
+    animation: hero-gradient-shift 20s ease infinite;
+  }
+
+  /* ── AI Demo typing animation ── */
+  @keyframes typing-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .typing-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: currentColor;
+    margin-left: 2px;
+    animation: typing-cursor 0.8s steps(1) infinite;
+    vertical-align: text-bottom;
+  }
+
+  @keyframes fade-in-msg {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .ai-msg-enter {
+    animation: fade-in-msg 0.4s ease-out forwards;
+  }
+
+  /* ── Hero glass panel ── */
+  .hero-glass {
+    background: hsla(0, 0%, 100%, 0.04);
+    border: 1px solid hsla(0, 0%, 100%, 0.08);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    box-shadow:
+      inset 0 1px 0 hsla(0, 0%, 100%, 0.06),
+      inset 0 0 40px hsla(0, 0%, 100%, 0.02),
+      0 16px 64px hsla(0, 0%, 0%, 0.3),
+      0 0 0 1px hsla(0, 0%, 100%, 0.05);
+  }
+
+  /* ── Hero pill buttons ── */
+  .hero-btn-primary {
+    background: hsla(0, 0%, 100%, 0.95);
+    color: hsl(0, 0%, 6%);
+    box-shadow:
+      0 0 0 1px hsla(0, 0%, 100%, 0.4),
+      0 4px 24px hsla(0, 0%, 0%, 0.2),
+      0 0 48px hsla(0, 0%, 100%, 0.06);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-btn-primary:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow:
+      0 0 0 1px hsla(0, 0%, 100%, 0.5),
+      0 8px 40px hsla(0, 0%, 0%, 0.25),
+      0 0 80px hsla(0, 0%, 100%, 0.1);
+  }
+
+  .hero-btn-secondary {
+    background: hsla(0, 0%, 100%, 0.06);
+    border: 1px solid hsla(0, 0%, 100%, 0.12);
+    backdrop-filter: blur(16px);
+    box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, 0.08);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-btn-secondary:hover {
+    background: hsla(0, 0%, 100%, 0.12);
+    border-color: hsla(0, 0%, 100%, 0.2);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow:
+      inset 0 1px 0 hsla(0, 0%, 100%, 0.12),
+      0 4px 20px hsla(0, 0%, 0%, 0.15);
+  }
 }
