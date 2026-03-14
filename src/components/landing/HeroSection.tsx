@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -10,7 +9,7 @@ import {
 import { fadeUp } from "@/lib/animations";
 import sangptLogo from "@/assets/sangpt-logo.png";
 import devlinkLogo from "@/assets/devlink-logo.png";
-import { HeroScene3D } from "./HeroScene3D";
+import { AiDemoChat } from "./AiDemoChat";
 
 const capabilities = [
   { icon: MessageSquare, title: "Natural Language Chat", desc: "Communicate naturally in English and Krio with context-aware AI that understands nuance, intent, and follow-ups across long conversations." },
@@ -33,35 +32,33 @@ const useCases = [
 export function HeroSection() {
   return (
     <section id="home" className="relative overflow-hidden">
-      {/* ─── 3D HERO ─── */}
-      <div className="relative min-h-screen pt-20 pb-16 flex items-center overflow-hidden">
-        {/* 3D Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, hsl(220 15% 8%) 0%, hsl(250 20% 12%) 40%, hsl(220 25% 10%) 100%)" }} />
-          <Suspense fallback={null}>
-            <HeroScene3D />
-          </Suspense>
-        </div>
+      {/* ─── HERO ─── */}
+      <div className="relative min-h-screen pt-20 pb-20 flex items-center overflow-hidden">
+        {/* Animated gradient background */}
+        <div className="absolute inset-0 z-0 hero-gradient-bg" />
 
-        {/* Ambient glow orbs */}
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 glow-orb" style={{ background: "hsla(220, 70%, 50%, 0.08)" }} />
-        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 glow-orb" style={{ background: "hsla(280, 60%, 50%, 0.06)" }} />
+        {/* Subtle ambient glow overlays */}
+        <div className="absolute top-[20%] left-[15%] w-[500px] h-[500px] rounded-full pointer-events-none z-[1]" style={{ background: "radial-gradient(circle, hsla(250, 50%, 40%, 0.12), transparent 60%)", filter: "blur(60px)" }} />
+        <div className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] rounded-full pointer-events-none z-[1]" style={{ background: "radial-gradient(circle, hsla(220, 60%, 45%, 0.1), transparent 60%)", filter: "blur(60px)" }} />
+        <div className="absolute top-[60%] left-[50%] w-[300px] h-[300px] rounded-full pointer-events-none z-[1]" style={{ background: "radial-gradient(circle, hsla(280, 40%, 35%, 0.08), transparent 60%)", filter: "blur(50px)" }} />
 
-        {/* Gradient overlays for text readability */}
-        <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(90deg, hsla(220, 15%, 8%, 0.85) 0%, hsla(220, 15%, 8%, 0.4) 50%, transparent 100%)" }} />
-        <div className="absolute bottom-0 left-0 right-0 h-32 z-[1]" style={{ background: "linear-gradient(to top, hsl(0, 0%, 98%), transparent)" }} />
+        {/* Future video layer — add <video> here when ready */}
+        <div className="absolute inset-0 z-[1]" aria-hidden="true" data-slot="video-bg" />
 
-        <div className="relative z-[2] mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24 w-full">
-          <div className="max-w-2xl">
-            <motion.div {...fadeUp(0)} className="flex flex-col justify-center">
-              {/* Glass badge */}
+        {/* Bottom fade to page bg */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 z-[2]" style={{ background: "linear-gradient(to top, hsl(0, 0%, 98%), transparent)" }} />
+
+        <div className="relative z-[3] mx-auto max-w-7xl px-4 lg:px-8 lg:pl-24 w-full">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Left: Content in glass panel */}
+            <motion.div {...fadeUp(0)} className="hero-glass rounded-3xl p-8 sm:p-10 lg:p-12">
+              {/* Badge */}
               <div
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white/80 text-xs font-semibold mb-8 w-fit"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white/80 text-xs font-semibold mb-10 w-fit"
                 style={{
-                  background: "hsla(0, 0%, 100%, 0.08)",
-                  border: "1px solid hsla(0, 0%, 100%, 0.15)",
+                  background: "hsla(0, 0%, 100%, 0.06)",
+                  border: "1px solid hsla(0, 0%, 100%, 0.1)",
                   backdropFilter: "blur(16px)",
-                  boxShadow: "inset 0 1px 0 hsla(0, 0%, 100%, 0.1), 0 4px 16px hsla(0, 0%, 0%, 0.2)",
                 }}
               >
                 <img src={devlinkLogo} alt="Dev-Link" className="h-4 w-4 rounded" />
@@ -69,35 +66,26 @@ export function HeroSection() {
                 <span className="ml-1">🇸🇱</span>
               </div>
 
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-2 text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              {/* Headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight mb-4 text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Meet Sangpt.
               </h1>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-white/50 mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+
+              {/* Subtitle */}
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-white/40 mb-8" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Sierra Leone's AI Companion
               </h2>
 
-              <p className="text-white/60 text-base lg:text-lg max-w-xl mb-10 leading-relaxed">
+              {/* Description */}
+              <p className="text-white/55 text-base lg:text-lg max-w-xl mb-12 leading-relaxed">
                 The first AI assistant built in Sierra Leone, by Sierra Leoneans, for the world. Smart, adaptive, and private — download now on the App Store & Google Play.
               </p>
 
-              {/* Glass CTA buttons */}
-              <div className="flex flex-wrap gap-3 mb-12">
+              {/* Pill buttons */}
+              <div className="flex flex-wrap gap-3 mb-14">
                 <Link
                   to="/download"
-                  className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-sm transition-all duration-300"
-                  style={{
-                    background: "hsla(0, 0%, 100%, 0.95)",
-                    color: "hsl(0, 0%, 9%)",
-                    boxShadow: "0 0 0 1px hsla(0,0%,100%,0.3), 0 4px 20px hsla(0,0%,0%,0.15), 0 0 40px hsla(0,0%,100%,0.08)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-2px) scale(1.03)";
-                    e.currentTarget.style.boxShadow = "0 0 0 1px hsla(0,0%,100%,0.4), 0 8px 30px hsla(0,0%,0%,0.2), 0 0 60px hsla(0,0%,100%,0.12)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "";
-                    e.currentTarget.style.boxShadow = "0 0 0 1px hsla(0,0%,100%,0.3), 0 4px 20px hsla(0,0%,0%,0.15), 0 0 40px hsla(0,0%,100%,0.08)";
-                  }}
+                  className="hero-btn-primary group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-sm"
                 >
                   <Download className="h-4 w-4" />
                   Download the App
@@ -105,40 +93,18 @@ export function HeroSection() {
                 </Link>
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm text-white transition-all duration-300"
-                  style={{
-                    background: "hsla(0, 0%, 100%, 0.08)",
-                    border: "1px solid hsla(0, 0%, 100%, 0.15)",
-                    backdropFilter: "blur(16px)",
-                    boxShadow: "inset 0 1px 0 hsla(0, 0%, 100%, 0.1)",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "hsla(0, 0%, 100%, 0.15)";
-                    e.currentTarget.style.borderColor = "hsla(0, 0%, 100%, 0.25)";
-                    e.currentTarget.style.transform = "translateY(-1px) scale(1.02)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "hsla(0, 0%, 100%, 0.08)";
-                    e.currentTarget.style.borderColor = "hsla(0, 0%, 100%, 0.15)";
-                    e.currentTarget.style.transform = "";
-                  }}
+                  className="hero-btn-secondary inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-sm text-white"
                 >
                   <Play className="h-4 w-4" />
                   Learn More
                 </Link>
               </div>
 
-              {/* Glass Stats Panel */}
-              <motion.div
-                {...fadeUp(0.3)}
-                className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 rounded-2xl"
-                style={{
-                  background: "hsla(0, 0%, 100%, 0.06)",
-                  border: "1px solid hsla(0, 0%, 100%, 0.1)",
-                  backdropFilter: "blur(20px)",
-                  boxShadow: "inset 0 1px 0 hsla(0, 0%, 100%, 0.08), 0 8px 32px hsla(0, 0%, 0%, 0.2)",
-                }}
-              >
+              {/* Stats */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl" style={{
+                background: "hsla(0, 0%, 100%, 0.03)",
+                border: "1px solid hsla(0, 0%, 100%, 0.06)",
+              }}>
                 {[
                   { value: "🇸🇱", label: "Made in Salone" },
                   { value: "10K+", label: "Downloads" },
@@ -147,10 +113,15 @@ export function HeroSection() {
                 ].map((stat) => (
                   <div key={stat.label} className="text-center py-2">
                     <div className="text-2xl font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{stat.value}</div>
-                    <div className="text-[11px] text-white/40 mt-1 font-medium uppercase tracking-wider">{stat.label}</div>
+                    <div className="text-[11px] text-white/35 mt-1 font-medium uppercase tracking-wider">{stat.label}</div>
                   </div>
                 ))}
-              </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Right: AI Demo Chat */}
+            <motion.div {...fadeUp(0.2)} className="hidden lg:block">
+              <AiDemoChat />
             </motion.div>
           </div>
         </div>
