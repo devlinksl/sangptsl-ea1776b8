@@ -174,6 +174,17 @@
     opacity: 0.4;
   }
 
+  /* ── Splash screen animations ── */
+  @keyframes splash-pulse {
+    0%, 100% { box-shadow: inset 0 0 20px hsla(0, 0%, 100%, 0.05); }
+    50% { box-shadow: inset 0 0 30px hsla(0, 0%, 100%, 0.15), 0 0 40px hsla(250, 50%, 50%, 0.15); }
+  }
+
+  @keyframes splash-dot {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
   /* ── Animated gradient background ── */
   @keyframes hero-gradient-shift {
     0%, 100% {
