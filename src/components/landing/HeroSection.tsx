@@ -102,11 +102,8 @@ export function HeroSection() {
                 </Link>
               </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl" style={{
-                background: "hsla(0, 0%, 100%, 0.03)",
-                border: "1px solid hsla(0, 0%, 100%, 0.06)",
-              }}>
+              {/* Stats — true glass panel */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-2xl hero-glass">
                 {[
                   { value: "🇸🇱", label: "Made in Salone" },
                   { value: "10K+", label: "Downloads" },
