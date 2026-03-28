@@ -158,16 +158,11 @@ export function Sidebar() {
   return (
     <>
       <aside
-        className={`hidden lg:flex fixed left-0 top-16 bottom-0 z-40 flex-col transition-all duration-300 ${
+      <aside
+        className={`hidden lg:flex fixed left-0 top-16 bottom-0 z-40 flex-col transition-all duration-300 glass-strong ${
           expanded ? "w-60" : "w-[72px]"
         }`}
-        style={{
-          background: "hsla(0, 0%, 100%, 0.4)",
-          backdropFilter: "blur(40px) saturate(1.3)",
-          WebkitBackdropFilter: "blur(40px) saturate(1.3)",
-          borderRight: "1px solid hsla(0, 0%, 100%, 0.25)",
-          boxShadow: "4px 0 30px hsla(0, 0%, 0%, 0.03), inset -1px 0 0 hsla(0, 0%, 100%, 0.15)",
-        }}
+        style={{ borderRight: "1px solid hsla(var(--glass-border))" }}
       >
         <SidebarInner expanded={expanded} onToggle={() => setExpanded(!expanded)} />
       </aside>
