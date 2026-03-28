@@ -182,14 +182,8 @@ export function Sidebar() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 300 }}
-              className="lg:hidden fixed left-0 top-0 bottom-0 z-[70] w-72 flex flex-col overflow-y-auto"
-              style={{
-                background: "hsla(0, 0%, 100%, 0.65)",
-                backdropFilter: "blur(40px) saturate(1.4)",
-                WebkitBackdropFilter: "blur(40px) saturate(1.4)",
-                borderRight: "1px solid hsla(0, 0%, 100%, 0.3)",
-                boxShadow: "4px 0 40px hsla(0, 0%, 0%, 0.08), inset -1px 0 0 hsla(0, 0%, 100%, 0.2)",
-              }}
+              className="lg:hidden fixed left-0 top-0 bottom-0 z-[70] w-72 flex flex-col overflow-y-auto glass-strong"
+              style={{ borderRight: "1px solid hsla(var(--glass-border))" }}
             >
               <button
                 onClick={() => setMobileOpen(false)}
