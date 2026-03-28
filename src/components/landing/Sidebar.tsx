@@ -158,7 +158,6 @@ export function Sidebar() {
   return (
     <>
       <aside
-      <aside
         className={`hidden lg:flex fixed left-0 top-16 bottom-0 z-40 flex-col transition-all duration-300 glass-strong ${
           expanded ? "w-60" : "w-[72px]"
         }`}
