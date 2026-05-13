@@ -5,6 +5,7 @@ import { HeroSection } from "@/components/landing/HeroSection";
 import { FAQSection } from "@/components/landing/FAQSection";
 import { Footer } from "@/components/landing/Footer";
 import { SplashScreen } from "@/components/landing/SplashScreen";
+import { AmbientBlobs } from "@/components/AmbientBlobs";
 
 const Index = () => {
   const [splashDone, setSplashDone] = useState(false);
@@ -17,12 +18,13 @@ const Index = () => {
     <>
       {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
       <div
-        className="min-h-screen bg-background"
+        className="relative min-h-screen bg-background"
         style={{
           opacity: splashDone ? 1 : 0,
           transition: "opacity 0.6s ease",
         }}
       >
+        <AmbientBlobs />
         <Header />
         <Sidebar />
         <main className="lg:pl-60">
@@ -36,3 +38,4 @@ const Index = () => {
 };
 
 export default Index;
+

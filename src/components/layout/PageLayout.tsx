@@ -1,6 +1,7 @@
 import { Header } from "@/components/landing/Header";
 import { Sidebar } from "@/components/landing/Sidebar";
 import { Footer } from "@/components/landing/Footer";
+import { AmbientBlobs } from "@/components/AmbientBlobs";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -8,7 +9,8 @@ interface PageLayoutProps {
 
 export function PageLayout({ children }: PageLayoutProps) {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background">
+      <AmbientBlobs />
       <Header />
       <Sidebar />
       <main className="lg:pl-60 pt-16">
@@ -18,3 +20,4 @@ export function PageLayout({ children }: PageLayoutProps) {
     </div>
   );
 }
+
