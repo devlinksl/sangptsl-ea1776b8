@@ -36,43 +36,31 @@
 
     --radius: 1rem;
 
-    /* ── Liquid Glass tokens (light adaptation) ── */
-    --glass-bg: 255 255 255 / 0.55;
-    --glass-bg-hover: 255 255 255 / 0.72;
-    --glass-bg-active: 255 255 255 / 0.85;
-    --glass-bg-card: 255 255 255 / 0.55;
-    --glass-bg-nav: 255 255 255 / 0.45;
-    --glass-bg-modal: 255 255 255 / 0.78;
-    --glass-bg-input: 255 255 255 / 0.55;
-
-    --glass-border-subtle: 255 255 255 / 0.5;
-    --glass-border-rgb: 255 255 255 / 0.7;
-    --glass-border-strong: 255 255 255 / 0.9;
-
-    /* Inner edges for depth */
-    --glass-edge-light: 255 255 255 / 0.85;
-    --glass-edge-dark: 14 18 28 / 0.06;
-
-    /* Specular sheen */
-    --specular-top: 255 255 255 / 0.7;
-    --specular-bottom: 255 255 255 / 0.04;
-
-    /* Shadows */
-    --glass-shadow-sm: 0 2px 8px hsla(220, 30%, 20%, 0.05), inset 0 1px 0 hsla(0, 0%, 100%, 0.7);
-    --glass-shadow-md: 0 8px 32px hsla(220, 30%, 20%, 0.08), inset 0 1px 0 hsla(0, 0%, 100%, 0.75), inset 0 -1px 0 hsla(220, 20%, 20%, 0.04);
-    --glass-shadow-lg: 0 16px 48px hsla(220, 30%, 20%, 0.10), inset 0 2px 0 hsla(0, 0%, 100%, 0.8), inset 0 -2px 0 hsla(220, 20%, 20%, 0.06);
-    --glass-shadow-float: 0 24px 64px hsla(220, 30%, 20%, 0.14), 0 8px 24px hsla(220, 30%, 20%, 0.08), inset 0 2px 0 hsla(0, 0%, 100%, 0.9);
-
-    /* Legacy compat (older code) */
-    --glass-bg-strong: 255 255 255 / 0.78;
+    /* ── Liquid Glass tokens (light, HSL h s% l% / a) ── */
+    --glass-bg: 0 0% 100% / 0.55;
+    --glass-bg-strong: 0 0% 100% / 0.78;
+    --glass-bg-nav: 0 0% 100% / 0.5;
+    --glass-bg-input: 0 0% 100% / 0.55;
+    --glass-bg-modal: 0 0% 100% / 0.82;
     --glass-border: 220 30% 20% / 0.06;
     --glass-border-edge: 220 30% 20% / 0.10;
-    --glass-hover: 255 255 255 / 0.72;
+    --glass-hover: 0 0% 100% / 0.78;
+
     --glass-blur: 24px;
     --glass-blur-heavy: 40px;
+
     --glass-shadow: 0 8px 32px hsla(220, 30%, 20%, 0.06);
-    --glass-shadow-glow: var(--glass-shadow-md);
-    --glass-inner-glow: inset 0 1px 0 hsla(0, 0%, 100%, 0.7), inset 0 -1px 0 hsla(220, 20%, 20%, 0.03);
+    --glass-shadow-glow:
+      0 0 0 1px hsla(220, 30%, 20%, 0.04),
+      0 8px 32px hsla(220, 30%, 20%, 0.08),
+      inset 0 1px 0 hsla(0, 0%, 100%, 0.75);
+    --glass-inner-glow:
+      inset 0 1px 0 hsla(0, 0%, 100%, 0.7),
+      inset 0 -1px 0 hsla(220, 20%, 20%, 0.03);
+    --glass-shadow-float:
+      0 24px 64px hsla(220, 30%, 20%, 0.14),
+      0 8px 24px hsla(220, 30%, 20%, 0.08),
+      inset 0 2px 0 hsla(0, 0%, 100%, 0.85);
 
     /* Chromatic iridescent edge fringe */
     --chromatic-border: linear-gradient(135deg,
@@ -80,8 +68,13 @@
       hsla(210, 100%, 80%, 0.55) 25%,
       hsla(160, 100%, 80%, 0.55) 50%,
       hsla(50, 100%, 80%, 0.55) 75%,
-      hsla(320, 100%, 80%, 0.55) 100%
-    );
+      hsla(320, 100%, 80%, 0.55) 100%);
+
+    /* Specular sheen gradient (top edge highlight) */
+    --specular-gradient: linear-gradient(180deg,
+      hsla(0, 0%, 100%, 0.65) 0%,
+      hsla(0, 0%, 100%, 0.18) 35%,
+      hsla(0, 0%, 100%, 0) 100%);
 
     /* Spring easings */
     --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -91,13 +84,13 @@
     --gradient-primary: linear-gradient(135deg, hsl(220 25% 14%), hsl(220 20% 30%));
     --gradient-surface: linear-gradient(135deg, hsla(0, 0%, 100%, 0.95), hsla(0, 0%, 100%, 0.6));
 
-    --sidebar-background: 255 255 255 / 0.6;
+    --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 220 20% 28%;
     --sidebar-primary: 220 25% 12%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 255 255 255 / 0.75;
+    --sidebar-accent: 0 0% 97%;
     --sidebar-accent-foreground: 220 25% 12%;
-    --sidebar-border: 255 255 255 / 0.4;
+    --sidebar-border: 0 0% 94%;
     --sidebar-ring: 220 25% 12%;
   }
 
