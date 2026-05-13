@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Menu } from "lucide-react";
 import sangptLogo from "@/assets/sangpt-logo.png";
-import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -46,8 +45,6 @@ export function Header() {
             </Link>
           ))}
         </nav>
-
-        <ThemeToggle />
 
         <Link
           to="/download"
