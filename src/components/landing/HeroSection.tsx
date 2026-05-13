@@ -38,16 +38,11 @@ export function HeroSection() {
         <div className="absolute inset-0 z-0 hero-gradient-bg" />
 
         {/* Subtle ambient glow overlays */}
-        <div className="absolute top-[20%] left-[15%] w-[400px] h-[400px] rounded-full pointer-events-none z-[1]" style={{ background: "radial-gradient(circle, hsla(220, 50%, 50%, 0.1), transparent 60%)", filter: "blur(80px)" }} />
-        <div className="absolute bottom-[20%] right-[10%] w-[350px] h-[350px] rounded-full pointer-events-none z-[1]" style={{ background: "radial-gradient(circle, hsla(240, 40%, 50%, 0.08), transparent 60%)", filter: "blur(80px)" }} />
+        <div className="absolute top-[20%] left-[15%] w-[400px] h-[400px] rounded-full pointer-events-none z-[1]" style={{ background: "radial-gradient(circle, hsla(35, 80%, 70%, 0.18), transparent 60%)", filter: "blur(80px)" }} />
+        <div className="absolute bottom-[20%] right-[10%] w-[350px] h-[350px] rounded-full pointer-events-none z-[1]" style={{ background: "radial-gradient(circle, hsla(220, 70%, 75%, 0.15), transparent 60%)", filter: "blur(80px)" }} />
 
         {/* Future video layer */}
         <div className="absolute inset-0 z-[1]" aria-hidden="true" data-slot="video-bg" />
-
-        {/* Smooth gradient transition to content */}
-        <div className="absolute bottom-0 left-0 right-0 h-[250px] z-[2]" style={{
-          background: "linear-gradient(to top, hsl(var(--background)) 0%, hsla(var(--background) / 0.7) 40%, transparent 100%)",
-        }} />
 
         <div className="relative z-[3] mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:pl-24 w-full">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
@@ -55,10 +50,10 @@ export function HeroSection() {
             <motion.div {...fadeUp(0)} className="hero-glass rounded-3xl p-6 sm:p-8 lg:p-10">
               {/* Badge */}
               <div
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-white/70 text-xs font-medium mb-8 w-fit"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-foreground/70 text-xs font-medium mb-8 w-fit"
                 style={{
-                  background: "hsla(0, 0%, 100%, 0.06)",
-                  border: "1px solid hsla(0, 0%, 100%, 0.08)",
+                  background: "hsla(0, 0%, 100%, 0.6)",
+                  border: "1px solid hsla(0, 0%, 0%, 0.06)",
                 }}
               >
                 <img src={devlinkLogo} alt="Dev-Link" className="h-3.5 w-3.5 rounded" />
@@ -67,17 +62,17 @@ export function HeroSection() {
               </div>
 
               {/* Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.08] tracking-tight mb-4 text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-[1.08] tracking-tight mb-4 text-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Meet Sangpt.
               </h1>
 
               {/* Subtitle */}
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-white/35 mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-foreground/55 mb-6" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                 Sierra Leone's AI Companion
               </h2>
 
               {/* Description */}
-              <p className="text-white/50 text-sm sm:text-base max-w-lg mb-10 leading-relaxed">
+              <p className="text-muted-foreground text-sm sm:text-base max-w-lg mb-10 leading-relaxed">
                 The first AI assistant built in Sierra Leone, by Sierra Leoneans, for the world. Smart, adaptive, and private — download now on the App Store & Google Play.
               </p>
 
@@ -93,7 +88,7 @@ export function HeroSection() {
                 </Link>
                 <Link
                   to="/about"
-                  className="hero-btn-secondary inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm text-white"
+                  className="hero-btn-secondary inline-flex items-center gap-2 px-6 py-3 rounded-full font-medium text-sm"
                 >
                   <Play className="h-3.5 w-3.5" />
                   Learn More
@@ -109,8 +104,8 @@ export function HeroSection() {
                   { value: "∞", label: "Possibilities" },
                 ].map((stat) => (
                   <div key={stat.label} className="text-center py-1.5">
-                    <div className="text-xl sm:text-2xl font-bold text-white" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{stat.value}</div>
-                    <div className="text-[10px] text-white/30 mt-0.5 font-medium uppercase tracking-wider">{stat.label}</div>
+                    <div className="text-xl sm:text-2xl font-bold text-foreground" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>{stat.value}</div>
+                    <div className="text-[10px] text-muted-foreground mt-0.5 font-medium uppercase tracking-wider">{stat.label}</div>
                   </div>
                 ))}
               </div>
