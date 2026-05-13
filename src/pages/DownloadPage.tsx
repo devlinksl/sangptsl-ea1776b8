@@ -25,26 +25,23 @@ const DownloadPage = () => {
             {/* Left — App Preview Card */}
             <motion.div
               {...fadeUp(0)}
-              className="relative rounded-3xl overflow-hidden min-h-[560px] flex flex-col justify-between"
-              style={{
-                background: "linear-gradient(160deg, hsla(250, 30%, 18%, 1) 0%, hsla(220, 25%, 10%, 1) 50%, hsla(250, 20%, 8%, 1) 100%)",
-              }}
+              className="relative rounded-3xl overflow-hidden min-h-[560px] flex flex-col justify-between glass-strong"
             >
-              {/* Glow effects */}
+              {/* Ambient glow effects */}
               <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full" style={{ background: "radial-gradient(circle, hsla(220, 80%, 60%, 0.15), transparent 60%)", filter: "blur(40px)" }} />
-                <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full" style={{ background: "radial-gradient(circle, hsla(280, 60%, 50%, 0.1), transparent 60%)", filter: "blur(40px)" }} />
+                <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full" style={{ background: "radial-gradient(circle, hsla(35, 80%, 70%, 0.25), transparent 60%)", filter: "blur(60px)" }} />
+                <div className="absolute bottom-1/4 right-1/4 w-48 h-48 rounded-full" style={{ background: "radial-gradient(circle, hsla(220, 70%, 75%, 0.22), transparent 60%)", filter: "blur(60px)" }} />
               </div>
 
               <div className="flex items-center justify-between p-6 relative z-10">
-                <Link to="/" className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style={{ background: "hsla(0,0%,100%,0.08)", border: "1px solid hsla(0,0%,100%,0.1)", backdropFilter: "blur(12px)" }}>
-                  <ChevronLeft className="h-4 w-4 text-white" />
+                <Link to="/" className="glass-btn w-9 h-9 rounded-full flex items-center justify-center hover:scale-110">
+                  <ChevronLeft className="h-4 w-4 text-foreground" />
                 </Link>
                 <div className="flex items-center gap-1.5">
                   {[1, 2, 3, 4, 5].map((s) => (
                     <Star key={s} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
                   ))}
-                  <span className="text-white/50 text-xs ml-1.5">5.0</span>
+                  <span className="text-muted-foreground text-xs ml-1.5">5.0</span>
                 </div>
               </div>
 
@@ -55,27 +52,22 @@ const DownloadPage = () => {
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className="absolute inset-0 rounded-3xl" style={{ boxShadow: "0 0 60px hsla(220, 80%, 60%, 0.2), 0 0 120px hsla(280, 60%, 50%, 0.1)" }} />
+                  <div className="absolute inset-0 rounded-3xl" style={{ boxShadow: "0 0 60px hsla(220, 80%, 60%, 0.18), 0 0 120px hsla(35, 70%, 60%, 0.12)" }} />
                   <img src={sangptLogo} alt="Sangpt AI" className="w-36 h-36 rounded-3xl relative z-10" />
                 </motion.div>
               </div>
 
               <div className="p-8 pt-0 relative z-10">
-                <h1 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                <h1 className="text-3xl font-bold text-foreground mb-2" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   Sangpt AI 🇸🇱
                 </h1>
-                <p className="text-white/50 text-sm leading-relaxed mb-6">
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
                   Sierra Leone's AI companion — smart, private, and built with love by Dev-Link in Freetown.
                 </p>
                 <a
                   href={APK_URL}
                   download="sangpt.apk"
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-full font-semibold text-sm transition-all duration-300 group hover:scale-[1.02]"
-                  style={{
-                    background: "hsla(0, 0%, 100%, 0.95)",
-                    color: "hsl(0, 0%, 9%)",
-                    boxShadow: "0 0 0 1px hsla(0,0%,100%,0.3), 0 4px 20px hsla(0,0%,0%,0.15), 0 0 40px hsla(0,0%,100%,0.08)",
-                  }}
+                  className="hero-btn-primary w-full flex items-center justify-center gap-2 px-6 py-4 rounded-full font-semibold text-sm group"
                 >
                   <Download className="h-4 w-4" />
                   Download APK
